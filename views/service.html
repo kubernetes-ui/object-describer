@@ -1,5 +1,5 @@
 <div>
-  <kubernetes-describe-header resource="resource"></kubernetes-describe-header>
+  <kubernetes-object-describe-header resource="resource"></kubernetes-object-describe-header>
   <dl class="dl-horizontal">
     <dt>Name</dt>
     <dd>{{resource.metadata.name}}</dd>
@@ -23,7 +23,7 @@
     <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector">{{selectorKey}}</dt>
     <dd ng-repeat-end>{{selectorValue}}</dd>
   </dl>
-  <kubernetes-describe-labels resource="resource"></kubernetes-describe-labels>
-  <kubernetes-describe-annotations resource="resource"></kubernetes-describe-annotations>
-  <kubernetes-describe-footer resource="resource"></kubernetes-describe-footer>
+  <kubernetes-object-describe-labels resource="resource"></kubernetes-object-describe-labels>
+  <kubernetes-object-describe-annotations resource="resource"></kubernetes-object-describe-annotations>
+  <kubernetes-object-describe-footer resource="resource"></kubernetes-object-describe-footer>
 </div>

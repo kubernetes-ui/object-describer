@@ -3,8 +3,8 @@
 try { angular.module("kubernetesUI") } catch(e) { angular.module("kubernetesUI", []) }
 
 angular.module('kubernetesUI')
-.factory('KubernetesDescriber', [function() {
-  function KubernetesDescriber() {
+.factory('KubernetesObjectDescriber', [function() {
+  function KubernetesObjectDescriber() {
     this.kinds = {
       "Pod" : {
         templateUrl: "views/pod.html"
@@ -18,28 +18,28 @@ angular.module('kubernetesUI')
     };
   }
 
-  KubernetesDescriber.prototype.registerKind = function(kind, templateUrl, overwrite) {
+  KubernetesObjectDescriber.prototype.registerKind = function(kind, templateUrl, overwrite) {
     if (this.kinds[kind] && !overwrite) {
-      throw "KubernetesDescriber.registerKind :: kind " + kind + " is already registered."
+      throw "KubernetesObjectDescriber.registerKind :: kind " + kind + " is already registered."
     }
     if (!templateUrl) {
-      throw "KubernetesDescriber.registerKind :: templateUrl is required."
+      throw "KubernetesObjectDescriber.registerKind :: templateUrl is required."
     }
     this.kinds[kind] = {
       templateUrl: templateUrl
     };
   };
 
-  KubernetesDescriber.prototype.templateUrlForKind = function(kind) {
+  KubernetesObjectDescriber.prototype.templateUrlForKind = function(kind) {
     if (kind && this.kinds[kind]) {
       return this.kinds[kind].templateUrl;
     }
     return 'views/default-describer.html';
   };
 
-  return new KubernetesDescriber();
+  return new KubernetesObjectDescriber();
 }])
-.directive("kubernetesDescriber", function(KubernetesDescriber) {
+.directive("kubernetesObjectDescriber", function(KubernetesObjectDescriber) {
   return {
     restrict: 'E',
     scope: {
@@ -47,11 +47,11 @@ angular.module('kubernetesUI')
       moreDetailsLink: '@'
     },
     templateUrl: function(element, attrs) {
-      return KubernetesDescriber.templateUrlForKind(attrs.kind);
+      return KubernetesObjectDescriber.templateUrlForKind(attrs.kind);
     }
   }
 })
-.directive("kubernetesDescribeLabels", function() {
+.directive("kubernetesObjectDescribeLabels", function() {
   return {
     restrict: 'E',
     scope: {
@@ -60,7 +60,7 @@ angular.module('kubernetesUI')
     templateUrl: 'views/labels.html'
   }
 })
-.directive("kubernetesDescribeAnnotations", function() {
+.directive("kubernetesObjectDescribeAnnotations", function() {
   return {
     restrict: 'E',
     scope: {
@@ -69,7 +69,7 @@ angular.module('kubernetesUI')
     templateUrl: 'views/annotations.html'
   }
 })
-.directive("kubernetesDescribeMetadata", function() {
+.directive("kubernetesObjectDescribeMetadata", function() {
   return {
     restrict: 'E',
     scope: {
@@ -78,7 +78,7 @@ angular.module('kubernetesUI')
     templateUrl: 'views/metadata.html'
   }
 })
-.directive("kubernetesDescribeHeader", function() {
+.directive("kubernetesObjectDescribeHeader", function() {
   return {
     restrict: 'E',
     scope: {
@@ -87,7 +87,7 @@ angular.module('kubernetesUI')
     templateUrl: 'views/header.html'
   }
 })
-.directive("kubernetesDescribeFooter", function() {
+.directive("kubernetesObjectDescribeFooter", function() {
   return {
     restrict: 'E',
     scope: {
@@ -96,7 +96,7 @@ angular.module('kubernetesUI')
     templateUrl: 'views/footer.html'
   }
 })
-.directive("kubernetesDescribeVolumes", function() {
+.directive("kubernetesObjectDescribeVolumes", function() {
   return {
     restrict: 'E',
     scope: {
@@ -105,7 +105,7 @@ angular.module('kubernetesUI')
     templateUrl: 'views/volumes.html'
   }
 })
-.directive("kubernetesDescribeContainers", function() {
+.directive("kubernetesObjectDescribeContainers", function() {
   return {
     restrict: 'E',
     scope: {

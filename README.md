@@ -9,10 +9,10 @@ This is an early implementation and is subject to change.
 Getting Started
 ---------------
 
-The kubernetes describer is provided in the kubernetes-describer bower package. To install run
+The kubernetes describer is provided in the kubernetes-object-describer bower package. To install run
 
 ```
-bower install kubernetes-describer --save
+bower install kubernetes-object-describer --save
 ```
 
 If you only want to use the LabelSelector include the `labelSelector.js` file and the global will be available to you.
@@ -40,39 +40,39 @@ Using the existing describers:
 
 ```
 <!-- Default generic describer -->
-<kubernetes-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html"></kubernetes-describer>
+<kubernetes-object-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html"></kubernetes-object-describer>
 
 <!-- Pod describer -->
-<kubernetes-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html" kind="Pod"></kubernetes-describer>
+<kubernetes-object-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html" kind="Pod"></kubernetes-object-describer>
 
 <!-- Service describer -->
-<kubernetes-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html" kind="Service"></kubernetes-describer>
+<kubernetes-object-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html" kind="Service"></kubernetes-object-describer>
 
 <!-- ReplicationController describer -->
-<kubernetes-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html" kind="ReplicationController"></kubernetes-describer>
+<kubernetes-object-describer resource="k8s-API-JSON-Object" more-details-link="optional/path/to/more/details.html" kind="ReplicationController"></kubernetes-object-describer>
 ```
 
 Registering additional describers:
 
 ```
-// Use the KubernetesDescriber service to register additional kinds or custom templates for existing kinds
+// Use the KubernetesObjectDescriber service to register additional kinds or custom templates for existing kinds
 // kind - the kind of API object, ex: 'Pod'.  You can specify custom kind names here like "MyCustomPod".
-// templateURLForKind - URL for the template to use when this Kind is passed to the <kubernetes-describer> directive
+// templateURLForKind - URL for the template to use when this Kind is passed to the <kubernetes-object-describer> directive
 // overwrite - by default registerKind will not let you re-register an already registered kind, to overwrite the existing
 //      template for a kind, pass overwrite=true
-KubernetesDescriber.registerKind(kind, templateURLForKind, overwrite)
+KubernetesObjectDescriber.registerKind(kind, templateURLForKind, overwrite)
 ```
 #### Additional Directives
 
 A number of smaller directives have been made available to help with writing custom templates.
 
-* kubernetes-describe-header - renders a simple header, currently just renders the Kind according to the resource object
-* kubernetes-describe-footer - renders a simple footer, currently renders the optional more-details-link
-* kubernetes-describe-labels - renders any labels found on the resource
-* kubernetes-describe-annotations - renders any annotations found on the resource
-* kubernetes-describe-metadata - renders basic metadata (name, namespace, creationTimestamp) as well as labels and annotations
-* kubernetes-describe-containers - renders details about the array of containers passed to it
-* kubernetes-describe-volumes - renders details about the array of volumes passed to it
+* kubernetes-object-describe-header - renders a simple header, currently just renders the Kind according to the resource object
+* kubernetes-object-describe-footer - renders a simple footer, currently renders the optional more-details-link
+* kubernetes-object-describe-labels - renders any labels found on the resource
+* kubernetes-object-describe-annotations - renders any annotations found on the resource
+* kubernetes-object-describe-metadata - renders basic metadata (name, namespace, creationTimestamp) as well as labels and annotations
+* kubernetes-object-describe-containers - renders details about the array of containers passed to it
+* kubernetes-object-describe-volumes - renders details about the array of volumes passed to it
 
 Theme
 -----

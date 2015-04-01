@@ -1,12 +1,12 @@
 {
-  "name": "describer",
+  "name": "object-describer",
   "version": "0.0.1",
   "description": "Provides an extendable describer for kubernetes resources. Includes an angular directive for rendering an instance of a describer.",
   "repository": {
     "type": "git",
     "url": "git://github.com/kubernetes-ui/describer.git"
   },
-  "main": "describer.js",
+  "main": "object-describer.js",
   "dependencies": {
   },
   "devDependencies": {

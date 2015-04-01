@@ -23,16 +23,16 @@
   </head>
 <body ng-app="exampleApp" style="margin-left: 10px;">
     <h1>Default generic describer</h1>
-    <kubernetes-describer resource="kubernetesExamplePod" more-details-link="example/path/to/more/details.htm"></kubernetes-describer>
+    <kubernetes-object-describer resource="kubernetesExamplePod" more-details-link="example/path/to/more/details.htm"></kubernetes-object-describer>
     <hr>
     <h1>Pod describer</h1>
-    <kubernetes-describer resource="kubernetesExamplePod" more-details-link="example/path/to/more/details.htm" kind="Pod"></kubernetes-describer>
+    <kubernetes-object-describer resource="kubernetesExamplePod" more-details-link="example/path/to/more/details.htm" kind="Pod"></kubernetes-object-describer>
     <hr>
     <h1>Service describer</h1>
-    <kubernetes-describer resource="kubernetesExampleService" more-details-link="example/path/to/more/details.htm" kind="Service"></kubernetes-describer>
+    <kubernetes-object-describer resource="kubernetesExampleService" more-details-link="example/path/to/more/details.htm" kind="Service"></kubernetes-object-describer>
     <hr>
     <h1>Replication Controller describer</h1>
-    <kubernetes-describer resource="kubernetesExampleRC" more-details-link="example/path/to/more/details.htm" kind="ReplicationController"></kubernetes-describer>    
+    <kubernetes-object-describer resource="kubernetesExampleRC" more-details-link="example/path/to/more/details.htm" kind="ReplicationController"></kubernetes-object-describer>    
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
@@ -43,7 +43,7 @@
         <script src="fixtures/pod.js"></script>
         <script src="fixtures/service.js"></script>
         <script src="fixtures/replicationController.js"></script>
-        <script src="describer.js"></script>
+        <script src="object-describer.js"></script>
         <!-- endbuild -->
 
     <script type="text/javascript">

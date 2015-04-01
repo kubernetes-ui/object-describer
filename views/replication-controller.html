@@ -1,5 +1,5 @@
 <div>
-  <kubernetes-describe-header resource="resource"></kubernetes-describe-header>
+  <kubernetes-object-describe-header resource="resource"></kubernetes-object-describe-header>
   <dl class="dl-horizontal">
     <dt>Name</dt>
     <dd>{{resource.metadata.name}}</dd>
@@ -23,10 +23,10 @@
     <dd>{{resource.spec.template.spec.dnsPolicy}}</dd>
   </dl>  
   <h4>Containers</h4>
-  <kubernetes-describe-containers containers="resource.spec.template.spec.containers"></kubernetes-describe-containers>
+  <kubernetes-object-describe-containers containers="resource.spec.template.spec.containers"></kubernetes-object-describe-containers>
   <h4>Volumes</h4>
-  <kubernetes-describe-volumes volumes="resource.spec.template.spec.volumes"></kubernetes-describe-volumes>
-  <kubernetes-describe-labels resource="resource"></kubernetes-describe-labels>
-  <kubernetes-describe-annotations resource="resource"></kubernetes-describe-annotations>
-  <kubernetes-describe-footer resource="resource"></kubernetes-describe-footer>
+  <kubernetes-object-describe-volumes volumes="resource.spec.template.spec.volumes"></kubernetes-object-describe-volumes>
+  <kubernetes-object-describe-labels resource="resource"></kubernetes-object-describe-labels>
+  <kubernetes-object-describe-annotations resource="resource"></kubernetes-object-describe-annotations>
+  <kubernetes-object-describe-footer resource="resource"></kubernetes-object-describe-footer>
 </div>
