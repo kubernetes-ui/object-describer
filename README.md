@@ -1,5 +1,5 @@
-Kubernetes Describer
-====================
+Kubernetes Object Describer
+===========================
 
 Provides an extendable describer for kubernetes resources. Includes an angular directive for rendering an instance of a describer.
 
