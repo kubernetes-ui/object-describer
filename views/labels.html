@@ -1,0 +1,6 @@
+<h3>Labels</h3>
+<span ng-if="!resource.metadata.labels"><em>none</em></span>
+<dl class="dl-horizontal" ng-if="resource.metadata.labels">
+  <dt ng-repeat-start="(labelKey, labelValue) in resource.metadata.labels">{{labelKey}}</dt>
+  <dd ng-repeat-end>{{labelValue}}</dd>
+</dl>

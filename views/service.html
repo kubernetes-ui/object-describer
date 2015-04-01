@@ -1,0 +1,29 @@
+<div>
+  <kubernetes-describe-header resource="resource"></kubernetes-describe-header>
+  <dl class="dl-horizontal">
+    <dt>Name</dt>
+    <dd>{{resource.metadata.name}}</dd>
+    <dt>Namespace</dt>
+    <dd>{{resource.metadata.namespace}}</dd>
+    <dt>Created</dt>
+    <dd>{{resource.metadata.creationTimestamp}}</dd>
+    <dt>IP</dt>
+    <dd>{{resource.spec.portalIP}}</dd>
+    <dt>Port</dt>
+    <dd>{{resource.spec.port}}</dd>    
+    <dt>Container port</dt>
+    <dd>{{resource.spec.containerPort}}</dd>
+    <dt>Protocol</dt>
+    <dd>{{resource.spec.protocol}}</dd>
+    <dt>Session affinity</dt>
+    <dd>{{resource.spec.sessionAffinity}}</dd>    
+  </dl>
+  <h3>Selector</h3>
+  <dl class="dl-horizontal">
+    <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector">{{selectorKey}}</dt>
+    <dd ng-repeat-end>{{selectorValue}}</dd>
+  </dl>
+  <kubernetes-describe-labels resource="resource"></kubernetes-describe-labels>
+  <kubernetes-describe-annotations resource="resource"></kubernetes-describe-annotations>
+  <kubernetes-describe-footer resource="resource"></kubernetes-describe-footer>
+</div>

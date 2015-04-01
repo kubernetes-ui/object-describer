@@ -1,0 +1,32 @@
+<div>
+  <kubernetes-describe-header resource="resource"></kubernetes-describe-header>
+  <dl class="dl-horizontal">
+    <dt>Name</dt>
+    <dd>{{resource.metadata.name}}</dd>
+    <dt>Namespace</dt>
+    <dd>{{resource.metadata.namespace}}</dd>
+    <dt>Created</dt>
+    <dd>{{resource.metadata.creationTimestamp}}</dd>
+    <dt>Replicas</dt>
+    <dd>{{resource.spec.replicas}}</dd>
+  </dl>
+  <h3>Selector</h3>
+  <dl class="dl-horizontal">
+    <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector">{{selectorKey}}</dt>
+    <dd ng-repeat-end>{{selectorValue}}</dd>
+  </dl>
+  <h3>Pod Template</h3>
+  <dl class="dl-horizontal">
+    <dt>Restart policy</dt>
+    <dd>{{resource.spec.template.spec.restartPolicy}}</dd>
+    <dt>DNS policy</dt>
+    <dd>{{resource.spec.template.spec.dnsPolicy}}</dd>
+  </dl>  
+  <h4>Containers</h4>
+  <kubernetes-describe-containers containers="resource.spec.template.spec.containers"></kubernetes-describe-containers>
+  <h4>Volumes</h4>
+  <kubernetes-describe-volumes volumes="resource.spec.template.spec.volumes"></kubernetes-describe-volumes>
+  <kubernetes-describe-labels resource="resource"></kubernetes-describe-labels>
+  <kubernetes-describe-annotations resource="resource"></kubernetes-describe-annotations>
+  <kubernetes-describe-footer resource="resource"></kubernetes-describe-footer>
+</div>

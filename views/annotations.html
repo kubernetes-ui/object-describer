@@ -1,0 +1,6 @@
+  <h3>Annotations</h3>
+  <span ng-if="!resource.metadata.annotations"><em>none</em></span>
+  <dl class="dl-horizontal" ng-if="resource.metadata.annotations">
+    <dt ng-repeat-start="(annotationKey, annotationValue) in resource.metadata.annotations">{{annotationKey}}</dt>
+    <dd ng-repeat-end>{{annotationValue}}</dd>
+  </dl>

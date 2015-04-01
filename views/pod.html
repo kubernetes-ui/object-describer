@@ -1,0 +1,29 @@
+<div>
+  <kubernetes-describe-header resource="resource"></kubernetes-describe-header>
+  <dl class="dl-horizontal">
+    <dt>Name</dt>
+    <dd>{{resource.metadata.name}}</dd>
+    <dt>Namespace</dt>
+    <dd>{{resource.metadata.namespace}}</dd>
+    <dt>Created</dt>
+    <dd>{{resource.metadata.creationTimestamp}}</dd>
+    <dt>Restart policy</dt>
+    <dd>{{resource.spec.restartPolicy}}</dd>    
+  </dl>
+  <h3>Status</h3>
+  <dl class="dl-horizontal">
+    <dt>Phase</dt>
+    <dd>{{resource.status.phase}}</dd>
+    <dt>Node</dt>
+    <dd>{{resource.status.host}}</dd>
+    <dt>IP on node</dt>
+    <dd>{{resource.status.podIP}}</dd>    
+  </dl>
+  <h3>Containers</h3>
+  <kubernetes-describe-containers containers="resource.spec.containers"></kubernetes-describe-containers>  
+  <h3>Volumes</h3>
+  <kubernetes-describe-volumes volumes="resource.spec.volumes"></kubernetes-describe-volumes>
+  <kubernetes-describe-labels resource="resource"></kubernetes-describe-labels>
+  <kubernetes-describe-annotations resource="resource"></kubernetes-describe-annotations>
+  <kubernetes-describe-footer resource="resource"></kubernetes-describe-footer>
+</div>
