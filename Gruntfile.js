@@ -70,14 +70,28 @@ module.exports = function(grunt) {
           paths: ['styles']
         }
       }
-    }    
+    },
+    concat: {
+      app: {
+        src: [ 'object-describer.js', 'templates.js' ],
+        dest: 'dist/object-describer.js'
+      }
+    },
+    ngtemplates: {
+      kubernetesUI: {
+        src: 'views/**.html',
+        dest: 'templates.js'
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-wiredep');  
+  grunt.loadNpmTasks('grunt-angular-templates');
 
   grunt.registerTask('serve', [
     'less',
@@ -86,6 +100,11 @@ module.exports = function(grunt) {
     "watch"
   ]);  
 
+  grunt.registerTask('build', [
+    'less',
+    'ngtemplates',
+    'concat'
+  ]);
   grunt.registerTask('default', ['serve']);
 
 };

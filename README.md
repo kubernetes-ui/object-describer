@@ -15,9 +15,7 @@ The kubernetes describer is provided in the kubernetes-object-describer bower pa
 bower install kubernetes-object-describer --save
 ```
 
-If you only want to use the LabelSelector include the `labelSelector.js` file and the global will be available to you.
-
-To use the describer service and directive include the `describer.js`. Make sure your angular app / module includes `kubernetesUI` as a module dependency.
+To use the describer service and directive include the `dist/object-describer.js`. Make sure your angular app / module includes `kubernetesUI` as a module dependency.
 
 ```
 angular.module('exampleApp', ['kubernetesUI'])
@@ -87,3 +85,8 @@ There are several enhancements being considered for future implementation.
 * verbosity modes - terse/normal/verbose modes intended to work on different levels of screen real estate. Normal might fit into a right sidebar, whereas verbose would be a full page of detail.
 * more describers - there are plenty of kubernetes Kinds that we don't have describers for yet
 * sample theme improvements
+
+Contributing
+------------
+
+Any time changes are made, run the `grunt build` task and include the updated dist/object-describer.js file in your commit.
