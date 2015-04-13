@@ -1,6 +1,6 @@
 {
   "name": "kubernetes-object-describer",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Provides an extendable describer for kubernetes resources. Includes an angular directive for rendering an instance of a describer.",
   "moduleType": [
     "globals"
@@ -20,7 +20,7 @@
     "tests"
   ],
   "main": [
-    "object-describer.js"
+    "dist/object-describer.js"
   ],
   "dependencies": {
     "angular": "~1.3.8"
