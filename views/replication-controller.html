@@ -15,17 +15,7 @@
     <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector">{{selectorKey}}</dt>
     <dd ng-repeat-end>{{selectorValue}}</dd>
   </dl>
-  <h3>Pod Template</h3>
-  <dl class="dl-horizontal">
-    <dt>Restart policy</dt>
-    <dd>{{resource.spec.template.spec.restartPolicy}}</dd>
-    <dt>DNS policy</dt>
-    <dd>{{resource.spec.template.spec.dnsPolicy}}</dd>
-  </dl>  
-  <h4>Containers</h4>
-  <kubernetes-object-describe-containers containers="resource.spec.template.spec.containers"></kubernetes-object-describe-containers>
-  <h4>Volumes</h4>
-  <kubernetes-object-describe-volumes volumes="resource.spec.template.spec.volumes"></kubernetes-object-describe-volumes>
+  <kubernetes-object-describe-pod-template template="resource.spec.template.spec"></kubernetes-object-describe-pod-template>
   <kubernetes-object-describe-labels resource="resource"></kubernetes-object-describe-labels>
   <kubernetes-object-describe-annotations resource="resource"></kubernetes-object-describe-annotations>
   <kubernetes-object-describe-footer resource="resource"></kubernetes-object-describe-footer>
