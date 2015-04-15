@@ -96,6 +96,15 @@ angular.module('kubernetesUI')
     templateUrl: 'views/footer.html'
   }
 })
+.directive("kubernetesObjectDescribePodTemplate", function() {
+  return {
+    restrict: 'E',
+    scope: {
+      template: '='
+    },
+    templateUrl: 'views/pod-template.html'
+  }
+})
 .directive("kubernetesObjectDescribeVolumes", function() {
   return {
     restrict: 'E',
@@ -192,6 +201,21 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('views/pod-template.html',
+    "<h3>Pod Template</h3>\n" +
+    "<dl class=\"dl-horizontal\">\n" +
+    "  <dt>Restart policy</dt>\n" +
+    "  <dd>{{template.restartPolicy}}</dd>\n" +
+    "  <dt>DNS policy</dt>\n" +
+    "  <dd>{{template.dnsPolicy}}</dd>\n" +
+    "</dl>  \n" +
+    "<h4>Containers</h4>\n" +
+    "<kubernetes-object-describe-containers containers=\"template.containers\"></kubernetes-object-describe-containers>\n" +
+    "<h4>Volumes</h4>\n" +
+    "<kubernetes-object-describe-volumes volumes=\"template.volumes\"></kubernetes-object-describe-volumes> "
+  );
+
+
   $templateCache.put('views/pod.html',
     "<div>\n" +
     "  <kubernetes-object-describe-header resource=\"resource\"></kubernetes-object-describe-header>\n" +
@@ -243,17 +267,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt ng-repeat-start=\"(selectorKey, selectorValue) in resource.spec.selector\">{{selectorKey}}</dt>\n" +
     "    <dd ng-repeat-end>{{selectorValue}}</dd>\n" +
     "  </dl>\n" +
-    "  <h3>Pod Template</h3>\n" +
-    "  <dl class=\"dl-horizontal\">\n" +
-    "    <dt>Restart policy</dt>\n" +
-    "    <dd>{{resource.spec.template.spec.restartPolicy}}</dd>\n" +
-    "    <dt>DNS policy</dt>\n" +
-    "    <dd>{{resource.spec.template.spec.dnsPolicy}}</dd>\n" +
-    "  </dl>  \n" +
-    "  <h4>Containers</h4>\n" +
-    "  <kubernetes-object-describe-containers containers=\"resource.spec.template.spec.containers\"></kubernetes-object-describe-containers>\n" +
-    "  <h4>Volumes</h4>\n" +
-    "  <kubernetes-object-describe-volumes volumes=\"resource.spec.template.spec.volumes\"></kubernetes-object-describe-volumes>\n" +
+    "  <kubernetes-object-describe-pod-template template=\"resource.spec.template.spec\"></kubernetes-object-describe-pod-template>\n" +
     "  <kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
     "  <kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>\n" +
     "  <kubernetes-object-describe-footer resource=\"resource\"></kubernetes-object-describe-footer>\n" +

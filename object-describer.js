@@ -96,6 +96,15 @@ angular.module('kubernetesUI')
     templateUrl: 'views/footer.html'
   }
 })
+.directive("kubernetesObjectDescribePodTemplate", function() {
+  return {
+    restrict: 'E',
+    scope: {
+      template: '='
+    },
+    templateUrl: 'views/pod-template.html'
+  }
+})
 .directive("kubernetesObjectDescribeVolumes", function() {
   return {
     restrict: 'E',
