@@ -39,15 +39,19 @@ angular.module('kubernetesUI')
 
   return new KubernetesObjectDescriber();
 }])
-.directive("kubernetesObjectDescriber", function(KubernetesObjectDescriber) {
+.directive("kubernetesObjectDescriber", function(KubernetesObjectDescriber, $templateCache, $compile) {
   return {
     restrict: 'E',
     scope: {
       resource: '=',
+      kind: '@',
       moreDetailsLink: '@'
     },
-    templateUrl: function(element, attrs) {
-      return KubernetesObjectDescriber.templateUrlForKind(attrs.kind);
+    link: function(scope, element, attrs) {
+      // TODO test this for any potential XSS vulnerabilities
+      var templateUrl = KubernetesObjectDescriber.templateUrlForKind(scope.kind);
+      element.html($templateCache.get(templateUrl));
+      $compile(element.contents())(scope);
     }
   }
 })
