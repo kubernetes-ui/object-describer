@@ -86,7 +86,8 @@ angular.module('kubernetesUI')
   return {
     restrict: 'E',
     scope: {
-      resource: '='
+      resource: '=',
+      kind: '='
     },
     templateUrl: 'views/header.html'
   }
@@ -162,7 +163,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/default-describer.html',
     "<div>\n" +
-    "  <kubernetes-object-describe-header resource=\"resource\"></kubernetes-object-describe-header>\n" +
+    "  <kubernetes-object-describe-header resource=\"resource\" kind=\"kind\"></kubernetes-object-describe-header>\n" +
     "  <kubernetes-object-describe-metadata resource=\"resource\"></kubernetes-object-describe-metadata>\n" +
     "  <kubernetes-object-describe-footer resource=\"resource\"></kubernetes-object-describe-footer>\n" +
     "</div>"
@@ -177,7 +178,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/header.html',
-    "<h3>{{resource.kind}}</h3>"
+    "<h3>{{kind || resource.kind || 'Resource'}}</h3>"
   );
 
 
@@ -222,7 +223,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/pod.html',
     "<div>\n" +
-    "  <kubernetes-object-describe-header resource=\"resource\"></kubernetes-object-describe-header>\n" +
+    "  <kubernetes-object-describe-header resource=\"resource\" kind=\"kind\"></kubernetes-object-describe-header>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
     "    <dt>Name</dt>\n" +
     "    <dd>{{resource.metadata.name}}</dd>\n" +
@@ -255,7 +256,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/replication-controller.html',
     "<div>\n" +
-    "  <kubernetes-object-describe-header resource=\"resource\"></kubernetes-object-describe-header>\n" +
+    "  <kubernetes-object-describe-header resource=\"resource\" kind=\"kind\"></kubernetes-object-describe-header>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
     "    <dt>Name</dt>\n" +
     "    <dd>{{resource.metadata.name}}</dd>\n" +
@@ -281,7 +282,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/service.html',
     "<div>\n" +
-    "  <kubernetes-object-describe-header resource=\"resource\"></kubernetes-object-describe-header>\n" +
+    "  <kubernetes-object-describe-header resource=\"resource\" kind=\"kind\"></kubernetes-object-describe-header>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
     "    <dt>Name</dt>\n" +
     "    <dd>{{resource.metadata.name}}</dd>\n" +

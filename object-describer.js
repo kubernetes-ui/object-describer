@@ -86,7 +86,8 @@ angular.module('kubernetesUI')
   return {
     restrict: 'E',
     scope: {
-      resource: '='
+      resource: '=',
+      kind: '='
     },
     templateUrl: 'views/header.html'
   }
