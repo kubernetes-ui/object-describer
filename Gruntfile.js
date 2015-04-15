@@ -42,6 +42,13 @@ module.exports = function(grunt) {
       css: {
         files: 'styles/*.less',
         tasks: ['less']
+      },
+      js: {
+        files: [
+          'object-describer.js',
+          'views/*.html'
+        ],
+        tasks: ['build']
       }      
     },
     // The actual grunt server settings
