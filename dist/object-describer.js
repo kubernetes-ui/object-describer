@@ -48,10 +48,22 @@ angular.module('kubernetesUI')
       moreDetailsLink: '@'
     },
     link: function(scope, element, attrs) {
-      // TODO test this for any potential XSS vulnerabilities
-      var templateUrl = KubernetesObjectDescriber.templateUrlForKind(scope.kind);
-      element.html($templateCache.get(templateUrl));
-      $compile(element.contents())(scope);
+      var compileTemplate = function() {
+        // TODO test this for any potential XSS vulnerabilities
+        var templateUrl = KubernetesObjectDescriber.templateUrlForKind(scope.kind);
+        element.html($templateCache.get(templateUrl));
+        $compile(element.contents())(scope);
+      };
+
+      // Initial template compilation based on the current kind
+      compileTemplate();
+
+      // Any time the kind changes, find the new template and compile it
+      scope.$watch('kind', function(newValue, oldValue) {
+        if (newValue != oldValue) {
+          compileTemplate();
+        }
+      });
     }
   }
 })
