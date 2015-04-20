@@ -12,7 +12,7 @@
   </dl>
   <h3>Selector</h3>
   <dl class="dl-horizontal">
-    <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector">{{selectorKey}}</dt>
+    <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector" title="{{selectorKey}}">{{selectorKey}}</dt>
     <dd ng-repeat-end>{{selectorValue}}</dd>
   </dl>
   <kubernetes-object-describe-pod-template template="resource.spec.template.spec"></kubernetes-object-describe-pod-template>
