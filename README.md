@@ -9,7 +9,9 @@ This is an early implementation and is subject to change.
 Getting Started
 ---------------
 
-The kubernetes describer is provided in the kubernetes-object-describer bower package. To install run
+The kubernetes describer is provided in the kubernetes-object-describer bower package. 
+
+To use the kubernetes-object-describer bower component in another project, run:
 
 ```
 bower install kubernetes-object-describer --save
@@ -77,6 +79,13 @@ Theme
 
 The example theme used in `index.html` is based on bootstrap, however bootstrap is not required as a bower dependency and you can change the theme however you want.
 
+Optional Features
+-----------------
+
+jQuery is not required as a dependency, but when it is available additional features will be turned on:
+
+* collapsing long annotation values - when annotations have very long values they will be truncated and then can be clicked to expand
+
 Future enhancements
 -------------------
 
@@ -89,4 +98,4 @@ There are several enhancements being considered for future implementation.
 Contributing
 ------------
 
-Any time changes are made, run the `grunt build` task and include the updated dist/object-describer.js file in your commit.
+Git clone this repo and run `grunt serve`. While the server is running, any time changes are made to the JS or HTML files the build will run automatically.  Before committing any changes run the `grunt build` task to make sure dist/object-describer.js has been updated and include the updated file in your commit.

@@ -103,6 +103,7 @@ module.exports = function(grunt) {
   grunt.registerTask('serve', [
     'less',
     'wiredep',
+    'build',
     'connect:server',
     "watch"
   ]);  

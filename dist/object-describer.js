@@ -139,16 +139,47 @@ angular.module('kubernetesUI')
     },
     templateUrl: 'views/containers.html'
   }
+})
+.directive("collapseLongText", function() {
+  return {
+    restrict: 'A',
+    scope: {
+      value: '@',
+      enableCollapse: '=?' // not intended to be passed in, it will be set depending on jquery availability
+    },
+    controller: function($scope) {
+      // If jquery is available
+      $scope.enableCollapse = !!window.$;
+    },
+    link: function($scope, element, attrs) {
+      if ($scope.enableCollapse) {
+        $('.reveal-contents-link', element).click(function (evt) {
+          $(this).hide();
+          $('.reveal-contents', element).show();
+        });  
+      }
+    },    
+    templateUrl: 'views/_collapse-long-text.html'
+  }
 });
 angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
   'use strict';
+
+  $templateCache.put('views/_collapse-long-text.html',
+    "<span ng-hide=\"enableCollapse && value.length > 120\">{{value}}</span>\n" +
+    "<span ng-show=\"enableCollapse && value.length > 120\">\n" +
+    "  <span class=\"reveal-contents-link\" style=\"cursor: pointer;\" title=\"Expand\">{{value.substring(0, 120)}}<a href=\"javascript:;\">...</a></span>\n" +
+    "  <span style=\"display: none;\" class=\"reveal-contents\">{{value}}</span>\n" +
+    "</span>"
+  );
+
 
   $templateCache.put('views/annotations.html',
     "  <h3>Annotations</h3>\n" +
     "  <span ng-if=\"!resource.metadata.annotations\"><em>none</em></span>\n" +
     "  <dl class=\"dl-horizontal\" ng-if=\"resource.metadata.annotations\">\n" +
-    "    <dt ng-repeat-start=\"(annotationKey, annotationValue) in resource.metadata.annotations\">{{annotationKey}}</dt>\n" +
-    "    <dd ng-repeat-end>{{annotationValue}}</dd>\n" +
+    "    <dt ng-repeat-start=\"(annotationKey, annotationValue) in resource.metadata.annotations\" title=\"{{annotationKey}}\">{{annotationKey}}</dt>\n" +
+    "    <dd ng-repeat-end collapse-long-text value=\"{{annotationValue}}\"></dd>\n" +
     "  </dl>"
   );
 

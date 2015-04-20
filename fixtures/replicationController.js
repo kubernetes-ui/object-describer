@@ -14,7 +14,8 @@ window.EXAMPLE_RC = {
     "annotations": {
       "deploymentConfig": "database",
       "deploymentStatus": "Complete",
-      "deploymentVersion": "1"
+      "deploymentVersion": "1",
+      "encodedDeploymentConfig": "{\"kind\":\"DeploymentConfig\",\"apiVersion\":\"v1beta1\",\"metadata\":{\"name\":\"database\",\"namespace\":\"test\",\"selfLink\":\"/osapi/v1beta1/deploymentConfigs/database?namespace=test\",\"uid\":\"362d0590-e208-11e4-bdc4-54ee75107c12\",\"resourceVersion\":\"99\",\"creationTimestamp\":\"2015-04-13T18:09:22Z\",\"labels\":{\"template\":\"application-template-stibuild\"}},\"triggers\":[{\"type\":\"ConfigChange\"}],\"template\":{\"strategy\":{\"type\":\"Recreate\"},\"controllerTemplate\":{\"replicas\":1,\"replicaSelector\":{\"name\":\"database\"},\"podTemplate\":{\"desiredState\":{\"manifest\":{\"version\":\"v1beta2\",\"id\":\"\",\"volumes\":null,\"containers\":[{\"name\":\"ruby-helloworld-database\",\"image\":\"openshift/mysql-55-centos7\",\"ports\":[{\"containerPort\":3306,\"protocol\":\"TCP\"}],\"env\":[{\"name\":\"MYSQL_USER\",\"key\":\"MYSQL_USER\",\"value\":\"userTJW\"},{\"name\":\"MYSQL_PASSWORD\",\"key\":\"MYSQL_PASSWORD\",\"value\":\"HOtpCU67\"},{\"name\":\"MYSQL_DATABASE\",\"key\":\"MYSQL_DATABASE\",\"value\":\"root\"}],\"resources\":{},\"terminationMessagePath\":\"/dev/termination-log\",\"imagePullPolicy\":\"PullIfNotPresent\",\"capabilities\":{}}],\"restartPolicy\":{\"always\":{}},\"dnsPolicy\":\"ClusterFirst\"}},\"labels\":{\"name\":\"database\",\"template\":\"application-template-stibuild\"}}}},\"latestVersion\":1,\"details\":{\"causes\":[{\"type\":\"ConfigChange\"}]}}"
     }
   },
   "spec": {
