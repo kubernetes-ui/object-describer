@@ -229,7 +229,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<h3>Labels</h3>\n" +
     "<span ng-if=\"!resource.metadata.labels\"><em>none</em></span>\n" +
     "<dl class=\"dl-horizontal\" ng-if=\"resource.metadata.labels\">\n" +
-    "  <dt ng-repeat-start=\"(labelKey, labelValue) in resource.metadata.labels\">{{labelKey}}</dt>\n" +
+    "  <dt ng-repeat-start=\"(labelKey, labelValue) in resource.metadata.labels\" title=\"{{labelKey}}\">{{labelKey}}</dt>\n" +
     "  <dd ng-repeat-end>{{labelValue}}</dd>\n" +
     "</dl>"
   );
@@ -312,7 +312,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  </dl>\n" +
     "  <h3>Selector</h3>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
-    "    <dt ng-repeat-start=\"(selectorKey, selectorValue) in resource.spec.selector\">{{selectorKey}}</dt>\n" +
+    "    <dt ng-repeat-start=\"(selectorKey, selectorValue) in resource.spec.selector\" title=\"{{selectorKey}}\">{{selectorKey}}</dt>\n" +
     "    <dd ng-repeat-end>{{selectorValue}}</dd>\n" +
     "  </dl>\n" +
     "  <kubernetes-object-describe-pod-template template=\"resource.spec.template.spec\"></kubernetes-object-describe-pod-template>\n" +
