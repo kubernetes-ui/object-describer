@@ -139,4 +139,26 @@ angular.module('kubernetesUI')
     },
     templateUrl: 'views/containers.html'
   }
+})
+.directive("collapseLongText", function() {
+  return {
+    restrict: 'A',
+    scope: {
+      value: '@',
+      enableCollapse: '=?' // not intended to be passed in, it will be set depending on jquery availability
+    },
+    controller: function($scope) {
+      // If jquery is available
+      $scope.enableCollapse = !!window.$;
+    },
+    link: function($scope, element, attrs) {
+      if ($scope.enableCollapse) {
+        $('.reveal-contents-link', element).click(function (evt) {
+          $(this).hide();
+          $('.reveal-contents', element).show();
+        });  
+      }
+    },    
+    templateUrl: 'views/_collapse-long-text.html'
+  }
 });
