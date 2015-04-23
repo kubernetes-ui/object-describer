@@ -54,7 +54,7 @@ window.EXAMPLE_POD = {
         "status": "Full"
       }
     ],
-    "host": "example.node.com",
+    "hostIP": "127.0.0.1",
     "podIP": "1.2.3.4",
     "info": {
       "example-pod": {

@@ -15,7 +15,8 @@
     <dt>Phase</dt>
     <dd>{{resource.status.phase}}</dd>
     <dt>Node</dt>
-    <dd>{{resource.status.host}}</dd>
+    <dd>{{resource.spec.host || 'unknown'}}
+      <span ng-if="resource.status.hostIP && resource.spec.host != resource.status.hostIP">({{resource.status.hostIP}})</dd>
     <dt>IP on node</dt>
     <dd>{{resource.status.podIP}}</dd>    
   </dl>
