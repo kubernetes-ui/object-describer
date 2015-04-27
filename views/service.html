@@ -9,12 +9,13 @@
     <dd>{{resource.metadata.creationTimestamp}}</dd>
     <dt>IP</dt>
     <dd>{{resource.spec.portalIP}}</dd>
-    <dt>Port</dt>
-    <dd>{{resource.spec.port}}</dd>    
-    <dt>Container port</dt>
-    <dd>{{resource.spec.containerPort}}</dd>
-    <dt>Protocol</dt>
-    <dd>{{resource.spec.protocol}}</dd>
+    <dt>Ports</dt>
+    <dd>
+      <div ng-if="!resource.spec.ports.length">None</div>
+      <div ng-repeat="portMapping in resource.spec.ports | orderBy:port">
+        {{portMapping.port}} &#8594; {{portMapping.targetPort}} ({{portMapping.protocol}})
+      </div>
+    </dd>
     <dt>Session affinity</dt>
     <dd>{{resource.spec.sessionAffinity}}</dd>    
   </dl>

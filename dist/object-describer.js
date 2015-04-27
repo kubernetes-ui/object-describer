@@ -191,16 +191,22 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<dd>{{container.name}}</dd>\n" +
     "<dt>Image</dt>\n" +
     "<dd>{{container.image}}</dd>\n" +
-    "<dt ng-if-start=\"!container.ports.length\">Port(s)</dt>\n" +
-    "<dd ng-if-end><em>none</em></dd>\n" +
-    "<dt ng-repeat-start='port in container.ports'><span ng-if=\"$index == 0\">Port(s)</span></dt>\n" +
-    "<dd ng-repeat-end>{{port.containerPort}}/{{port.protocol}}<span ng-if=\"port.hostPort\"> to host port {{port.hostPort}}</span></dd>\n" +
-    "<dt ng-if-start=\"!container.env.length\">Env var(s)</dt>\n" +
-    "<dd ng-if-end><em>none</em></dd>\n" +
-    "<dt ng-repeat-start='env in container.env'><span ng-if=\"$index == 0\">Env var(s)</span></dt>\n" +
-    "<dd ng-repeat-end>{{env.name}}={{env.value}}</dd>\n" +
+    "<dt>Ports</dt>\n" +
+    "<dd>\n" +
+    "  <div ng-if=\"!container.ports.length\"><em>none</em></div>\n" +
+    "  <div ng-repeat=\"port in container.ports | orderBy:containerPort\">\n" +
+    "    {{port.containerPort}}/{{port.protocol}}<span ng-if=\"port.hostPort\"> to host port {{port.hostPort}}</span>\n" +
+    "  </div>\n" +
+    "</dd>\n" +
+    "<dt>Env vars</dt>\n" +
+    "<dd>\n" +
+    "  <div ng-if=\"!resource.spec.ports.length\"><em>none</em></div>\n" +
+    "  <div ng-repeat=\"env in container.env | orderBy:name\">\n" +
+    "    {{env.name}}={{env.value}}\n" +
+    "  </div>\n" +
+    "</dd>\n" +
     "</dl>\n" +
-    "<div ng-if=\"$index != 0\" style=\"margin-bottom: 10px;\"></div>"
+    "<div ng-if=\"$index != 0\" style=\"margin-bottom: 10px;\"></div>\n"
   );
 
 
@@ -282,7 +288,8 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Phase</dt>\n" +
     "    <dd>{{resource.status.phase}}</dd>\n" +
     "    <dt>Node</dt>\n" +
-    "    <dd>{{resource.status.host}}</dd>\n" +
+    "    <dd>{{resource.spec.host || 'unknown'}}\n" +
+    "      <span ng-if=\"resource.status.hostIP && resource.spec.host != resource.status.hostIP\">({{resource.status.hostIP}})</dd>\n" +
     "    <dt>IP on node</dt>\n" +
     "    <dd>{{resource.status.podIP}}</dd>    \n" +
     "  </dl>\n" +
@@ -293,7 +300,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
     "  <kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>\n" +
     "  <kubernetes-object-describe-footer resource=\"resource\"></kubernetes-object-describe-footer>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
@@ -335,12 +342,13 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dd>{{resource.metadata.creationTimestamp}}</dd>\n" +
     "    <dt>IP</dt>\n" +
     "    <dd>{{resource.spec.portalIP}}</dd>\n" +
-    "    <dt>Port</dt>\n" +
-    "    <dd>{{resource.spec.port}}</dd>    \n" +
-    "    <dt>Container port</dt>\n" +
-    "    <dd>{{resource.spec.containerPort}}</dd>\n" +
-    "    <dt>Protocol</dt>\n" +
-    "    <dd>{{resource.spec.protocol}}</dd>\n" +
+    "    <dt>Ports</dt>\n" +
+    "    <dd>\n" +
+    "      <div ng-if=\"!resource.spec.ports.length\">None</div>\n" +
+    "      <div ng-repeat=\"portMapping in resource.spec.ports | orderBy:port\">\n" +
+    "        {{portMapping.port}} &#8594; {{portMapping.targetPort}} ({{portMapping.protocol}})\n" +
+    "      </div>\n" +
+    "    </dd>\n" +
     "    <dt>Session affinity</dt>\n" +
     "    <dd>{{resource.spec.sessionAffinity}}</dd>    \n" +
     "  </dl>\n" +
@@ -352,7 +360,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
     "  <kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>\n" +
     "  <kubernetes-object-describe-footer resource=\"resource\"></kubernetes-object-describe-footer>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
