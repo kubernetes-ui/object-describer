@@ -140,6 +140,24 @@ angular.module('kubernetesUI')
     templateUrl: 'views/containers.html'
   }
 })
+.directive("kubernetesObjectDescribeContainerStatuses", function() {
+  return {
+    restrict: 'E',
+    scope: {
+      containerStatuses: '='
+    },
+    templateUrl: 'views/container-statuses.html'
+  };
+})
+.directive("kubernetesObjectDescribeContainerState", function() {
+  return {
+    restrict: 'E',
+    scope: {
+      containerState: '='
+    },
+    templateUrl: 'views/container-state.html'
+  };
+})
 .directive("collapseLongText", function() {
   return {
     restrict: 'A',
@@ -161,4 +179,9 @@ angular.module('kubernetesUI')
     },    
     templateUrl: 'views/_collapse-long-text.html'
   }
+})
+.filter("isEmptyObj", function() {
+  return function(obj) {
+    return angular.equals({}, obj);
+  };
 });

@@ -140,6 +140,24 @@ angular.module('kubernetesUI')
     templateUrl: 'views/containers.html'
   }
 })
+.directive("kubernetesObjectDescribeContainerStatuses", function() {
+  return {
+    restrict: 'E',
+    scope: {
+      containerStatuses: '='
+    },
+    templateUrl: 'views/container-statuses.html'
+  };
+})
+.directive("kubernetesObjectDescribeContainerState", function() {
+  return {
+    restrict: 'E',
+    scope: {
+      containerState: '='
+    },
+    templateUrl: 'views/container-state.html'
+  };
+})
 .directive("collapseLongText", function() {
   return {
     restrict: 'A',
@@ -161,7 +179,13 @@ angular.module('kubernetesUI')
     },    
     templateUrl: 'views/_collapse-long-text.html'
   }
+})
+.filter("isEmptyObj", function() {
+  return function(obj) {
+    return angular.equals({}, obj);
+  };
 });
+
 angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
   'use strict';
 
@@ -181,6 +205,51 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt ng-repeat-start=\"(annotationKey, annotationValue) in resource.metadata.annotations\" title=\"{{annotationKey}}\">{{annotationKey}}</dt>\n" +
     "    <dd ng-repeat-end collapse-long-text value=\"{{annotationValue}}\"></dd>\n" +
     "  </dl>"
+  );
+
+
+  $templateCache.put('views/container-state.html',
+    "<span ng-if=\"containerState | isEmpty\"><em>none</em></span>\n" +
+    "<span ng-repeat=\"(state, stateDescription) in containerState | limitTo: 1\">\n" +
+    "  <span ng-switch=\"state\">\n" +
+    "    <span ng-switch-when=\"waiting\">\n" +
+    "      Waiting\n" +
+    "      <span ng-if=\"stateDescription.reason\">({{stateDescription.reason}})</span>\n" +
+    "    </span>\n" +
+    "    <span ng-switch-when=\"running\">\n" +
+    "      Running\n" +
+    "      <span ng-if=\"stateDescription.startedAt\">since {{stateDescription.startedAt}}</span>\n" +
+    "    </span>\n" +
+    "    <span ng-switch-when=\"termination\">\n" +
+    "      Terminated\n" +
+    "      <span ng-if=\"stateDescription.finishedAt\">at {{stateDescription.finishedAt}}</span>\n" +
+    "      <span ng-if=\"stateDescription.exitCode\">with exit code {{stateDescription.exitCode}}</span>\n" +
+    "      <span ng-if=\"stateDescription.reason\">({{stateDescription.reason}})</span>\n" +
+    "    </span>\n" +
+    "    <span ng-switch-default>{{state}}</span>\n" +
+    "  </span>\n" +
+    "</span>\n"
+  );
+
+
+  $templateCache.put('views/container-statuses.html',
+    "<div ng-if=\"containerStatuses.length == 0\"><em>none</em></div>\n" +
+    "<dl ng-repeat=\"containerStatus in containerStatuses | orderBy:'name'\" class=\"dl-horizontal\">\n" +
+    "  <dt>Name</dt>\n" +
+    "  <dd>{{containerStatus.name}}</dd>\n" +
+    "  <dt>State</dt>\n" +
+    "  <dd>\n" +
+    "    <kubernetes-object-describe-container-state container-state=\"containerStatus.state\"></container-state>\n" +
+    "  </dd>\n" +
+    "  <dt ng-if=\"!(containerStatus.lastState | isEmptyObj)\">Last State</dt>\n" +
+    "  <dd ng-if=\"!(containerStatus.lastState | isEmptyObj)\">\n" +
+    "    <kubernetes-object-describe-container-state container-state=\"containerStatus.lastState\"></container-state>\n" +
+    "  </dd>\n" +
+    "  <dt>Ready</dt>\n" +
+    "  <dd>{{containerStatus.ready}}</dd>\n" +
+    "  <dt>Restart Count</dt>\n" +
+    "  <dd>{{containerStatus.restartCount}}</dd>\n" +
+    "</dl>\n"
   );
 
 
@@ -286,6 +355,8 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>IP on node</dt>\n" +
     "    <dd>{{resource.status.podIP}}</dd>    \n" +
     "  </dl>\n" +
+    "  <h3>Container Statuses</h3>\n" +
+    "  <kubernetes-object-describe-container-statuses container-statuses=\"resource.status.containerStatuses\"></kubernetes-object-describe-container-statuses>\n" +
     "  <h3>Containers</h3>\n" +
     "  <kubernetes-object-describe-containers containers=\"resource.spec.containers\"></kubernetes-object-describe-containers>  \n" +
     "  <h3>Volumes</h3>\n" +
@@ -293,7 +364,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
     "  <kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>\n" +
     "  <kubernetes-object-describe-footer resource=\"resource\"></kubernetes-object-describe-footer>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
