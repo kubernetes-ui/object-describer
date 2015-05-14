@@ -218,11 +218,11 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    </span>\n" +
     "    <span ng-switch-when=\"running\">\n" +
     "      Running\n" +
-    "      <span ng-if=\"stateDescription.startedAt\">since {{stateDescription.startedAt}}</span>\n" +
+    "      <span ng-if=\"stateDescription.startedAt\">since {{stateDescription.startedAt | date:'medium'}}</span>\n" +
     "    </span>\n" +
     "    <span ng-switch-when=\"termination\">\n" +
     "      Terminated\n" +
-    "      <span ng-if=\"stateDescription.finishedAt\">at {{stateDescription.finishedAt}}</span>\n" +
+    "      <span ng-if=\"stateDescription.finishedAt\">at {{stateDescription.finishedAt | date:'medium'}}</span>\n" +
     "      <span ng-if=\"stateDescription.exitCode\">with exit code {{stateDescription.exitCode}}</span>\n" +
     "      <span ng-if=\"stateDescription.reason\">({{stateDescription.reason}})</span>\n" +
     "    </span>\n" +
@@ -317,10 +317,10 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <dt>Namespace</dt>\n" +
     "  <dd>{{resource.metadata.namespace}}</dd>\n" +
     "  <dt>Created</dt>\n" +
-    "  <dd>{{resource.metadata.creationTimestamp}}</dd>    \n" +
+    "  <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>    \n" +
     "</dl>\n" +
     "<kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
-    "<kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>"
+    "<kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>\n"
   );
 
 
@@ -348,7 +348,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Namespace</dt>\n" +
     "    <dd>{{resource.metadata.namespace}}</dd>\n" +
     "    <dt>Created</dt>\n" +
-    "    <dd>{{resource.metadata.creationTimestamp}}</dd>\n" +
+    "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>Restart policy</dt>\n" +
     "    <dd>{{resource.spec.restartPolicy}}</dd>    \n" +
     "  </dl>\n" +
@@ -384,7 +384,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Namespace</dt>\n" +
     "    <dd>{{resource.metadata.namespace}}</dd>\n" +
     "    <dt>Created</dt>\n" +
-    "    <dd>{{resource.metadata.creationTimestamp}}</dd>\n" +
+    "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>Replicas</dt>\n" +
     "    <dd>{{resource.spec.replicas}}</dd>\n" +
     "  </dl>\n" +
@@ -397,7 +397,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
     "  <kubernetes-object-describe-annotations resource=\"resource\"></kubernetes-object-describe-annotations>\n" +
     "  <kubernetes-object-describe-footer resource=\"resource\"></kubernetes-object-describe-footer>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
@@ -410,7 +410,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Namespace</dt>\n" +
     "    <dd>{{resource.metadata.namespace}}</dd>\n" +
     "    <dt>Created</dt>\n" +
-    "    <dd>{{resource.metadata.creationTimestamp}}</dd>\n" +
+    "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>IP</dt>\n" +
     "    <dd>{{resource.spec.portalIP}}</dd>\n" +
     "    <dt>Ports</dt>\n" +

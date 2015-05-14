@@ -6,7 +6,7 @@
     <dt>Namespace</dt>
     <dd>{{resource.metadata.namespace}}</dd>
     <dt>Created</dt>
-    <dd>{{resource.metadata.creationTimestamp}}</dd>
+    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>
     <dt>Replicas</dt>
     <dd>{{resource.spec.replicas}}</dd>
   </dl>
