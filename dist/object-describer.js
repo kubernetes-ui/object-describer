@@ -209,7 +209,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/container-state.html',
-    "<span ng-if=\"containerState | isEmpty\"><em>none</em></span>\n" +
+    "<span ng-if=\"containerState | isEmptyObj\"><em>none</em></span>\n" +
     "<span ng-repeat=\"(state, stateDescription) in containerState | limitTo: 1\">\n" +
     "  <span ng-switch=\"state\">\n" +
     "    <span ng-switch-when=\"waiting\">\n" +
