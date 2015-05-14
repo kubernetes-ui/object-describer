@@ -4,7 +4,7 @@
   <dt>Namespace</dt>
   <dd>{{resource.metadata.namespace}}</dd>
   <dt>Created</dt>
-  <dd>{{resource.metadata.creationTimestamp}}</dd>    
+  <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>    
 </dl>
 <kubernetes-object-describe-labels resource="resource"></kubernetes-object-describe-labels>
 <kubernetes-object-describe-annotations resource="resource"></kubernetes-object-describe-annotations>
