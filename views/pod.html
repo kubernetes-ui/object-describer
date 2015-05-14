@@ -20,6 +20,8 @@
     <dt>IP on node</dt>
     <dd>{{resource.status.podIP}}</dd>    
   </dl>
+  <h3>Container Statuses</h3>
+  <kubernetes-object-describe-container-statuses container-statuses="resource.status.containerStatuses"></kubernetes-object-describe-container-statuses>
   <h3>Containers</h3>
   <kubernetes-object-describe-containers containers="resource.spec.containers"></kubernetes-object-describe-containers>  
   <h3>Volumes</h3>

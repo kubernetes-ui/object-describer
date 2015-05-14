@@ -28,7 +28,35 @@ window.EXAMPLE_POD = {
     ],
     "containers": [
       {
-        "name": "example-pod",
+        "name": "container-1",
+        "image": "openshift/hello-openshift",
+        "ports": [
+          {
+            "containerPort": 8080,
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {},
+        "terminationMessagePath": "/dev/termination-log",
+        "imagePullPolicy": "IfNotPresent",
+        "capabilities": {}
+      },
+      {
+        "name": "container-2",
+        "image": "openshift/hello-openshift",
+        "ports": [
+          {
+            "containerPort": 8080,
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {},
+        "terminationMessagePath": "/dev/termination-log",
+        "imagePullPolicy": "IfNotPresent",
+        "capabilities": {}
+      },
+      {
+        "name": "container-3",
         "image": "openshift/hello-openshift",
         "ports": [
           {
@@ -56,19 +84,55 @@ window.EXAMPLE_POD = {
     ],
     "hostIP": "127.0.0.1",
     "podIP": "1.2.3.4",
-    "info": {
-      "example-pod": {
+    "containerStatuses": [
+      {
+        "name": "container-1",
         "state": {
           "running": {
-            "startedAt": null
+            "startedAt": "2015-05-11T20:16:19Z"
+          }
+        },
+        "lastState": {},
+        "ready": true,
+        "restartCount": 0,
+        "image": "openshift/mysql-55-centos7",
+        "imageID": "docker://655aba0e23e560c958653ec30ba614a40c1a4d5a4bdb112e9ab04d94a5ba478e",
+        "containerID": "docker://c2c01bd1598fd314ca78fe804af0242999c6146dd198e9f32e8066592c958a3f"
+      },
+      {
+        "name": "container-2",
+        "state": {
+          "waiting": {
+            "reason": "For reasons"
+          }
+        },
+        "lastState": {},
+        "ready": true,
+        "restartCount": 0,
+        "image": "openshift/mysql-55-centos7",
+        "imageID": "docker://655aba0e23e560c958653ec30ba614a40c1a4d5a4bdb112e9ab04d94a5ba478e",
+        "containerID": "docker://c2c01bd1598fd314ca78fe804af0242999c6146dd198e9f32e8066592c958a3f"
+      },
+      {
+        "name": "container-3",
+        "state": {
+          "termination": {
+            "finishedAt": "2015-05-11T20:32:19Z",
+            "exitCode": 1,
+            "reason": "An error occurred"
+          }
+        },
+        "lastState": {
+          "running": {
+            "startedAt": "2015-05-11T18:17:13Z"
           }
         },
         "ready": true,
         "restartCount": 0,
-        "image": "testimage",
-        "imageID": "docker://",
-        "containerID": "docker:///k8s_example-pod.5bcbfd7c_example-pod_test_6aefeebf-d7d2-11e4-a675-54ee75107c12_399fd945"
+        "image": "openshift/mysql-55-centos7",
+        "imageID": "docker://655aba0e23e560c958653ec30ba614a40c1a4d5a4bdb112e9ab04d94a5ba478e",
+        "containerID": "docker://c2c01bd1598fd314ca78fe804af0242999c6146dd198e9f32e8066592c958a3f"
       }
-    }
+    ]
   }
 };
