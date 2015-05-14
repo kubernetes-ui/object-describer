@@ -13,7 +13,7 @@
 </dd>
 <dt>Env vars</dt>
 <dd>
-  <div ng-if="!resource.spec.ports.length"><em>none</em></div>
+  <div ng-if="!container.env.length"><em>none</em></div>
   <div ng-repeat="env in container.env | orderBy:name">
     {{env.name}}={{env.value}}
   </div>
