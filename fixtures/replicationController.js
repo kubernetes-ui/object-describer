@@ -64,6 +64,10 @@ window.EXAMPLE_RC = {
               {
                 "name": "MYSQL_DATABASE",
                 "value": "root"
+              },
+              {
+                "name": "CA_DATA",
+                "value": "-----BEGIN CERTIFICATE----- MIIC5jCCAdCgAwIBAgIBATALBgkqhkiG9w0BAQswJjEkMCIGA1UEAwwbb3BlbnNo aWZ0LXNpZ25lckAxNDMyMTI5NDc4MB4XDTE1MDUyMDEzNDQzOFoXDTE2MDUxOTEz NDQzOVowJjEkMCIGA1UEAwwbb3BlbnNoaWZ0LXNpZ25lckAxNDMyMTI5NDc4MIIB IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxBidgLz/rUJZtHtBsw1uj5qQ IUxRPA5d0SNp5gF39GCcLUATCrmt6ZdquQpSA1siPzYApk9ODzR4y5V9Uuz7Vh5N XQqgSisO9Id5/hNBc3RywQTlTXBYfVvoaAYWWBBymG3YS7ZZCS596ipctCBbM7vI Q82MHKqmect6yOKLqoBzZkbxqXxwC2wu7pLBQ2fKuHuMU1eN8R4fPXggLuwx6tmn DnnfGvGf+r5v1kjhcJrEppqIm3BEk8df/czzLZouBgDNDp7IuvRgekKCiMl6YlbA C3ayy5AiULUPOebhsKMgWpyCAI+FWXQz23rE/4AByJxluMkYK1hi494gCohvxQID AQABoyMwITAOBgNVHQ8BAf8EBAMCAKQwDwYDVR0TAQH/BAUwAwEB/zALBgkqhkiG 9w0BAQsDggEBADSzmTnG15aTn/9OoWQHXmo1qGR/ItVkluOIK3t/J47gHXoqj3Ki Io/KLxOFJrwBMX2FYJT62/QXaKLbSMryP41uyunhNHvr0I/Vk0ypR9X6JSAFg4FY +Z2UCR2j5Bwq0QeNZE3rdGxCP+EwLcdPlqcWPSDtAs3QcKEMQdXJdyHXbr3oocd0 DpUj3ZvImRvzjECic7kBZwsa+KpnbqhuFXO//s0978ts6vWzUKn2rEvnZUcfrzdG ERpgM1G56yVE2Q1RErcb8PBg/3TGMDDqG23J+8cWaq0LwfpR4xEGZUTVJhe4eBVf WCllMNj7WZ0a6hoByFNNhPOFXgrrgPTvY9M= -----END CERTIFICATE-----"
               }
             ],
             "resources": {},
