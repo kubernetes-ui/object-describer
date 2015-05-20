@@ -270,9 +270,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<dt>Env vars</dt>\n" +
     "<dd>\n" +
     "  <div ng-if=\"!container.env.length\"><em>none</em></div>\n" +
-    "  <div ng-repeat=\"env in container.env | orderBy:name\">\n" +
-    "    {{env.name}}={{env.value}}\n" +
-    "  </div>\n" +
+    "  <div ng-repeat=\"env in container.env | orderBy:name\" collapse-long-text value=\"{{env.name}}={{env.value}}\"></div>\n" +
     "</dd>\n" +
     "</dl>\n" +
     "<div ng-if=\"$index != 0\" style=\"margin-bottom: 10px;\"></div>\n"
