@@ -233,7 +233,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/container-statuses.html',
-    "<div ng-if=\"containerStatuses.length == 0\"><em>none</em></div>\n" +
+    "<div ng-if=\"!containerStatuses\"><em>none</em></div>\n" +
     "<dl ng-repeat=\"containerStatus in containerStatuses | orderBy:'name'\" class=\"dl-horizontal\">\n" +
     "  <dt>Name</dt>\n" +
     "  <dd>{{containerStatus.name}}</dd>\n" +

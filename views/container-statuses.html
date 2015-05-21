@@ -1,4 +1,4 @@
-<div ng-if="containerStatuses.length == 0"><em>none</em></div>
+<div ng-if="!containerStatuses"><em>none</em></div>
 <dl ng-repeat="containerStatus in containerStatuses | orderBy:'name'" class="dl-horizontal">
   <dt>Name</dt>
   <dd>{{containerStatus.name}}</dd>
