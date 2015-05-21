@@ -263,14 +263,14 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<dt>Ports</dt>\n" +
     "<dd>\n" +
     "  <div ng-if=\"!container.ports.length\"><em>none</em></div>\n" +
-    "  <div ng-repeat=\"port in container.ports | orderBy:containerPort\">\n" +
+    "  <div ng-repeat=\"port in container.ports | orderBy:'containerPort'\">\n" +
     "    {{port.containerPort}}/{{port.protocol}}<span ng-if=\"port.hostPort\"> to host port {{port.hostPort}}</span>\n" +
     "  </div>\n" +
     "</dd>\n" +
     "<dt>Env vars</dt>\n" +
     "<dd>\n" +
     "  <div ng-if=\"!container.env.length\"><em>none</em></div>\n" +
-    "  <div ng-repeat=\"env in container.env | orderBy:name\" collapse-long-text value=\"{{env.name}}={{env.value}}\"></div>\n" +
+    "  <div ng-repeat=\"env in container.env | orderBy:'name'\" collapse-long-text value=\"{{env.name}}={{env.value}}\"></div>\n" +
     "</dd>\n" +
     "</dl>\n" +
     "<div ng-if=\"$index != 0\" style=\"margin-bottom: 10px;\"></div>\n"
@@ -414,7 +414,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Ports</dt>\n" +
     "    <dd>\n" +
     "      <div ng-if=\"!resource.spec.ports.length\">None</div>\n" +
-    "      <div ng-repeat=\"portMapping in resource.spec.ports | orderBy:port\">\n" +
+    "      <div ng-repeat=\"portMapping in resource.spec.ports | orderBy:'port'\">\n" +
     "        {{portMapping.port}} &#8594; {{portMapping.targetPort}} ({{portMapping.protocol}})\n" +
     "      </div>\n" +
     "    </dd>\n" +

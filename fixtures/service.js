@@ -21,16 +21,16 @@ window.EXAMPLE_SERVICE = {
         "targetPort": 3306
       },
       {
-        "name": "two",
-        "protocol": "TCP",
-        "port": 5435,
-        "targetPort": 3307
-      },
-      {
         "name": "three",
         "protocol": "UDP",
         "port": 5436,
         "targetPort": 3308
+      },
+      {
+        "name": "two",
+        "protocol": "TCP",
+        "port": 5435,
+        "targetPort": 3307
       }
     ],
     "selector": {
