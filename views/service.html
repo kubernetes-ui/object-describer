@@ -12,7 +12,7 @@
     <dt>Ports</dt>
     <dd>
       <div ng-if="!resource.spec.ports.length">None</div>
-      <div ng-repeat="portMapping in resource.spec.ports | orderBy:port">
+      <div ng-repeat="portMapping in resource.spec.ports | orderBy:'port'">
         {{portMapping.port}} &#8594; {{portMapping.targetPort}} ({{portMapping.protocol}})
       </div>
     </dd>
