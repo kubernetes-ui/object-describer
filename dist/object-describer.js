@@ -316,8 +316,8 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<dl class=\"dl-horizontal\">\n" +
     "  <dt>Name</dt>\n" +
     "  <dd>{{resource.metadata.name}}</dd>\n" +
-    "  <dt>Namespace</dt>\n" +
-    "  <dd>{{resource.metadata.namespace}}</dd>\n" +
+    "  <dt ng-if=\"resource.metadata.namespace\">Namespace</dt>\n" +
+    "  <dd ng-if=\"resource.metadata.namespace\">{{resource.metadata.namespace}}</dd>\n" +
     "  <dt>Created</dt>\n" +
     "  <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>    \n" +
     "</dl>\n" +
