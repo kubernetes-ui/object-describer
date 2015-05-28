@@ -39,7 +39,11 @@ angular.module('kubernetesUI')
 
   return new KubernetesObjectDescriber();
 }])
-.directive("kubernetesObjectDescriber", function(KubernetesObjectDescriber, $templateCache, $compile) {
+.directive("kubernetesObjectDescriber", [
+    "KubernetesObjectDescriber",
+    "$templateCache",
+    "$compile",
+    function(KubernetesObjectDescriber, $templateCache, $compile) {
   return {
     restrict: 'E',
     scope: {
@@ -66,7 +70,7 @@ angular.module('kubernetesUI')
       });
     }
   }
-})
+}])
 .directive("kubernetesObjectDescribeLabels", function() {
   return {
     restrict: 'E',
