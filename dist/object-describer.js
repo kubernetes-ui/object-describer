@@ -169,10 +169,10 @@ angular.module('kubernetesUI')
       value: '@',
       enableCollapse: '=?' // not intended to be passed in, it will be set depending on jquery availability
     },
-    controller: function($scope) {
+    controller: ["$scope", function($scope) {
       // If jquery is available
       $scope.enableCollapse = !!window.$;
-    },
+    }],
     link: function($scope, element, attrs) {
       if ($scope.enableCollapse) {
         $('.reveal-contents-link', element).click(function (evt) {
