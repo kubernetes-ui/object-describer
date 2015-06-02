@@ -1,5 +1,5 @@
 <span ng-if="containerState | isEmptyObj"><em>none</em></span>
-<span ng-repeat="(state, stateDescription) in containerState | limitTo: 1">
+<span ng-repeat="(state, stateDescription) in containerState | limitTo: 1" revealable-text>
   <span ng-switch="state">
     <span ng-switch-when="waiting">
       Waiting
