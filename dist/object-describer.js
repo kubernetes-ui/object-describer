@@ -348,7 +348,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Created</dt>\n" +
     "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>Restart policy</dt>\n" +
-    "    <dd>{{resource.spec.restartPolicy}}</dd>    \n" +
+    "    <dd>{{resource.spec.restartPolicy || 'Always'}}</dd>\n" +
     "  </dl>\n" +
     "  <h3>Status</h3>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
@@ -358,12 +358,15 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dd>{{resource.spec.host || 'unknown'}}\n" +
     "      <span ng-if=\"resource.status.hostIP && resource.spec.host != resource.status.hostIP\">({{resource.status.hostIP}})</dd>\n" +
     "    <dt>IP on node</dt>\n" +
-    "    <dd>{{resource.status.podIP}}</dd>    \n" +
+    "    <dd>\n" +
+    "      {{resource.status.podIP}}\n" +
+    "      <span ng-if=\"!resource.status.podIP\"><em>none</em></span>\n" +
+    "    </dd>\n" +
     "  </dl>\n" +
     "  <h3>Container Statuses</h3>\n" +
     "  <kubernetes-object-describe-container-statuses container-statuses=\"resource.status.containerStatuses\"></kubernetes-object-describe-container-statuses>\n" +
     "  <h3>Containers</h3>\n" +
-    "  <kubernetes-object-describe-containers containers=\"resource.spec.containers\"></kubernetes-object-describe-containers>  \n" +
+    "  <kubernetes-object-describe-containers containers=\"resource.spec.containers\"></kubernetes-object-describe-containers>\n" +
     "  <h3>Volumes</h3>\n" +
     "  <kubernetes-object-describe-volumes volumes=\"resource.spec.volumes\"></kubernetes-object-describe-volumes>\n" +
     "  <kubernetes-object-describe-labels resource=\"resource\"></kubernetes-object-describe-labels>\n" +
@@ -384,7 +387,8 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Created</dt>\n" +
     "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>Replicas</dt>\n" +
-    "    <dd>{{resource.spec.replicas}}</dd>\n" +
+    "    <!-- TODO: Update for API version v1. The default has changed from 0 to 1. -->\n" +
+    "    <dd>{{resource.spec.replicas || 0}}</dd>\n" +
     "  </dl>\n" +
     "  <h3>Selector</h3>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
