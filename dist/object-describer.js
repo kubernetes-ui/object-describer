@@ -261,7 +261,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<div ng-if=\"!containers.length\"><em>none</em></div>\n" +
     "<dl class=\"dl-horizontal\" ng-repeat=\"container in containers\">\n" +
     "<dt>Name</dt>\n" +
-    "<dd>{{container.name}}</dd>\n" +
+    "<dd>{{container.name}}<span hawtio-extension name=\"container-links-icons\"></span></dd>\n" +
     "<dt>Image</dt>\n" +
     "<dd>{{container.image}}</dd>\n" +
     "<dt>Ports</dt>\n" +
