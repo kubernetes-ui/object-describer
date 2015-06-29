@@ -1,8 +1,8 @@
 <dl class="dl-horizontal">
   <dt>Name</dt>
   <dd>{{resource.metadata.name}}</dd>
-  <dt>Namespace</dt>
-  <dd>{{resource.metadata.namespace}}</dd>
+  <dt ng-if="resource.metadata.namespace">Namespace</dt>
+  <dd ng-if="resource.metadata.namespace">{{resource.metadata.namespace}}</dd>
   <dt>Created</dt>
   <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>    
 </dl>
