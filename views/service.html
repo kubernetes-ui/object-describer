@@ -7,6 +7,8 @@
     <dd>{{resource.metadata.namespace}}</dd>
     <dt>Created</dt>
     <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>
+    <dt>Type</dt>
+    <dd>{{resource.spec.type}}</dd>
     <dt>IP</dt>
     <dd>{{resource.spec.portalIP}}</dd>
     <dt>Ports</dt>
@@ -18,6 +20,11 @@
     </dd>
     <dt>Session affinity</dt>
     <dd>{{resource.spec.sessionAffinity}}</dd>    
+    <dt ng-if="resource.status.loadBalancer.ingress.length">Ingress points</dt>
+    <dd ng-if="resource.status.loadBalancer.ingress.length">
+      <span ng-repeat="ingress in resource.status.loadBalancer.ingress"
+        >{{ingress.ip}}<span ng-if="!$last">, </span></span>
+    </dd>
   </dl>
   <h3>Selector</h3>
   <dl class="dl-horizontal">

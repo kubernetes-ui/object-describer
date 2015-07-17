@@ -34,6 +34,12 @@
     <h1>Service describer (headless)</h1>
     <kubernetes-object-describer resource="kubernetesExampleHeadlessService" more-details-link="example/path/to/more/details.htm" kind="Service"></kubernetes-object-describer>
     <hr>
+    <h1>Service describer (node port)</h1>
+    <kubernetes-object-describer resource="kubernetesExampleNodePortService" more-details-link="example/path/to/more/details.htm" kind="Service"></kubernetes-object-describer>
+    <hr>
+    <h1>Service describer (load balanced)</h1>
+    <kubernetes-object-describer resource="kubernetesExampleLoadBalancedService" more-details-link="example/path/to/more/details.htm" kind="Service"></kubernetes-object-describer>
+    <hr>
     <h1>Replication Controller describer</h1>
     <kubernetes-object-describer resource="kubernetesExampleRC" more-details-link="example/path/to/more/details.htm" kind="ReplicationController"></kubernetes-object-describer>    
     <!-- build:js(.) scripts/vendor.js -->
@@ -57,6 +63,8 @@
                 $rootScope.kubernetesExamplePod = window.EXAMPLE_POD;
                 $rootScope.kubernetesExampleService = window.EXAMPLE_SERVICE;
                 $rootScope.kubernetesExampleHeadlessService = window.EXAMPLE_HEADLESS_SERVICE;
+                $rootScope.kubernetesExampleNodePortService = window.EXAMPLE_NODE_PORT_SERVICE;
+                $rootScope.kubernetesExampleLoadBalancedService = window.EXAMPLE_LOAD_BALANCED_SERVICE;
                 $rootScope.kubernetesExampleRC = window.EXAMPLE_RC;
             });
     </script>
