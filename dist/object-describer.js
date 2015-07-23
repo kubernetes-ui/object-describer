@@ -417,6 +417,8 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dd>{{resource.metadata.namespace}}</dd>\n" +
     "    <dt>Created</dt>\n" +
     "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
+    "    <dt>Type</dt>\n" +
+    "    <dd>{{resource.spec.type}}</dd>\n" +
     "    <dt>IP</dt>\n" +
     "    <dd>{{resource.spec.portalIP}}</dd>\n" +
     "    <dt>Ports</dt>\n" +
@@ -428,6 +430,11 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    </dd>\n" +
     "    <dt>Session affinity</dt>\n" +
     "    <dd>{{resource.spec.sessionAffinity}}</dd>    \n" +
+    "    <dt ng-if=\"resource.status.loadBalancer.ingress.length\">Ingress points</dt>\n" +
+    "    <dd ng-if=\"resource.status.loadBalancer.ingress.length\">\n" +
+    "      <span ng-repeat=\"ingress in resource.status.loadBalancer.ingress\"\n" +
+    "        >{{ingress.ip}}<span ng-if=\"!$last\">, </span></span>\n" +
+    "    </dd>\n" +
     "  </dl>\n" +
     "  <h3>Selector</h3>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
