@@ -3,7 +3,8 @@
 <dt>Name</dt>
 <dd>{{container.name}}</dd>
 <dt>Image</dt>
-<dd>{{container.image}}</dd>
+<dd ng-if="container.image">{{container.image}}</dd>
+<dd ng-if="!container.image"><em>none</em></dd>
 <dt>Ports</dt>
 <dd>
   <div ng-if="!container.ports.length"><em>none</em></div>

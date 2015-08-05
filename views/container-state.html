@@ -9,7 +9,7 @@
       Running
       <span ng-if="stateDescription.startedAt">since {{stateDescription.startedAt | date:'medium'}}</span>
     </span>
-    <span ng-switch-when="termination">
+    <span ng-switch-when="terminated">
       Terminated
       <span ng-if="stateDescription.finishedAt">at {{stateDescription.finishedAt | date:'medium'}}</span>
       <span ng-if="stateDescription.exitCode">with exit code {{stateDescription.exitCode}}</span>

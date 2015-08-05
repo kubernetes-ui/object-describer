@@ -224,7 +224,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "      Running\n" +
     "      <span ng-if=\"stateDescription.startedAt\">since {{stateDescription.startedAt | date:'medium'}}</span>\n" +
     "    </span>\n" +
-    "    <span ng-switch-when=\"termination\">\n" +
+    "    <span ng-switch-when=\"terminated\">\n" +
     "      Terminated\n" +
     "      <span ng-if=\"stateDescription.finishedAt\">at {{stateDescription.finishedAt | date:'medium'}}</span>\n" +
     "      <span ng-if=\"stateDescription.exitCode\">with exit code {{stateDescription.exitCode}}</span>\n" +
@@ -263,7 +263,8 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "<dt>Name</dt>\n" +
     "<dd>{{container.name}}</dd>\n" +
     "<dt>Image</dt>\n" +
-    "<dd>{{container.image}}</dd>\n" +
+    "<dd ng-if=\"container.image\">{{container.image}}</dd>\n" +
+    "<dd ng-if=\"!container.image\"><em>none</em></dd>\n" +
     "<dt>Ports</dt>\n" +
     "<dd>\n" +
     "  <div ng-if=\"!container.ports.length\"><em>none</em></div>\n" +
@@ -333,11 +334,13 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <dd>{{template.restartPolicy}}</dd>\n" +
     "  <dt>DNS policy</dt>\n" +
     "  <dd>{{template.dnsPolicy}}</dd>\n" +
+    "  <dt ng-if=\"template.serviceAccountName\">Service account</dt>\n" +
+    "  <dd ng-if=\"template.serviceAccountName\">{{template.serviceAccountName}}</dd>\n" +
     "</dl>  \n" +
     "<h4>Containers</h4>\n" +
     "<kubernetes-object-describe-containers containers=\"template.containers\"></kubernetes-object-describe-containers>\n" +
     "<h4>Volumes</h4>\n" +
-    "<kubernetes-object-describe-volumes volumes=\"template.volumes\"></kubernetes-object-describe-volumes> "
+    "<kubernetes-object-describe-volumes volumes=\"template.volumes\"></kubernetes-object-describe-volumes> \n"
   );
 
 
@@ -353,14 +356,16 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>Restart policy</dt>\n" +
     "    <dd>{{resource.spec.restartPolicy || 'Always'}}</dd>\n" +
+    "    <dt ng-if=\"resource.spec.serviceAccountName\">Service account</dt>\n" +
+    "    <dd ng-if=\"resource.spec.serviceAccountName\">{{resource.spec.serviceAccountName}}</dd>\n" +
     "  </dl>\n" +
     "  <h3>Status</h3>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
     "    <dt>Phase</dt>\n" +
     "    <dd>{{resource.status.phase}}</dd>\n" +
     "    <dt>Node</dt>\n" +
-    "    <dd>{{resource.spec.host || 'unknown'}}\n" +
-    "      <span ng-if=\"resource.status.hostIP && resource.spec.host != resource.status.hostIP\">({{resource.status.hostIP}})</dd>\n" +
+    "    <dd>{{resource.spec.nodeName || 'unknown'}}\n" +
+    "      <span ng-if=\"resource.status.hostIP && resource.spec.nodeName != resource.status.hostIP\">({{resource.status.hostIP}})</span></dd>\n" +
     "    <dt>IP on node</dt>\n" +
     "    <dd>\n" +
     "      {{resource.status.podIP}}\n" +
@@ -391,8 +396,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Created</dt>\n" +
     "    <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>\n" +
     "    <dt>Replicas</dt>\n" +
-    "    <!-- TODO: Update for API version v1. The default has changed from 0 to 1. -->\n" +
-    "    <dd>{{resource.spec.replicas || 0}}</dd>\n" +
+    "    <dd>{{(resource.spec.replicas === undefined) ? 1 : resource.spec.replicas}}</dd>\n" +
     "  </dl>\n" +
     "  <h3>Selector</h3>\n" +
     "  <dl class=\"dl-horizontal\">\n" +
@@ -420,7 +424,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "    <dt>Type</dt>\n" +
     "    <dd>{{resource.spec.type}}</dd>\n" +
     "    <dt>IP</dt>\n" +
-    "    <dd>{{resource.spec.portalIP}}</dd>\n" +
+    "    <dd>{{resource.spec.clusterIP}}</dd>\n" +
     "    <dt>Ports</dt>\n" +
     "    <dd>\n" +
     "      <div ng-if=\"!resource.spec.ports.length\">None</div>\n" +

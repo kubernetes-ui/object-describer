@@ -4,6 +4,8 @@
   <dd>{{template.restartPolicy}}</dd>
   <dt>DNS policy</dt>
   <dd>{{template.dnsPolicy}}</dd>
+  <dt ng-if="template.serviceAccountName">Service account</dt>
+  <dd ng-if="template.serviceAccountName">{{template.serviceAccountName}}</dd>
 </dl>  
 <h4>Containers</h4>
 <kubernetes-object-describe-containers containers="template.containers"></kubernetes-object-describe-containers>
