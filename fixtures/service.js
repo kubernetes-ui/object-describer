@@ -1,10 +1,10 @@
 window.EXAMPLE_SERVICE = {
   "kind": "Service",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "database",
     "namespace": "test",
-    "selfLink": "/api/v1beta3/namespaces/test/services/database",
+    "selfLink": "/api/v1/namespaces/test/services/database",
     "uid": "4ed21ab1-d3e7-11e4-92f6-54ee75107c12",
     "resourceVersion": "102",
     "creationTimestamp": "2015-03-26T18:38:34Z",
@@ -37,7 +37,7 @@ window.EXAMPLE_SERVICE = {
       "name": "database"
     },
     "type": "ClusterIP",
-    "portalIP": "172.30.17.6",
+    "clusterIP": "172.30.17.6",
     "sessionAffinity": "ClientIP"
   },
   "status": {}
@@ -45,11 +45,11 @@ window.EXAMPLE_SERVICE = {
 
 window.EXAMPLE_HEADLESS_SERVICE = {
   "kind": "Service",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "headless",
     "namespace": "test",
-    "selfLink": "/api/v1beta3/namespaces/test/services/headless",
+    "selfLink": "/api/v1/namespaces/test/services/headless",
     "uid": "16e6dee1-e922-11e4-894c-0296ae7c2489",
     "resourceVersion": "102",
     "creationTimestamp": "2015-04-22T19:02:15Z",
@@ -63,7 +63,7 @@ window.EXAMPLE_HEADLESS_SERVICE = {
       "name": "headless"
     },
     "type": "ClusterIP",
-    "portalIP": "None",
+    "clusterIP": "None",
     "sessionAffinity": "None"
   },
   "status": {}
@@ -71,11 +71,11 @@ window.EXAMPLE_HEADLESS_SERVICE = {
 
 window.EXAMPLE_NODE_PORT_SERVICE = {
   "kind": "Service",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "node-port",
     "namespace": "test",
-    "selfLink": "/api/v1beta3/namespaces/test/services/node-port",
+    "selfLink": "/api/v1/namespaces/test/services/node-port",
     "uid": "4ed21ab1-d3e7-11e4-92f6-54ee75107c99",
     "resourceVersion": "104",
     "creationTimestamp": "2015-03-26T18:38:34Z",
@@ -104,7 +104,7 @@ window.EXAMPLE_NODE_PORT_SERVICE = {
       "name": "node-port"
     },
     "type": "NodePort",
-    "portalIP": "172.30.17.6",
+    "clusterIP": "172.30.17.6",
     "sessionAffinity": "None"
   },
   "status": {}
@@ -112,11 +112,11 @@ window.EXAMPLE_NODE_PORT_SERVICE = {
 
 window.EXAMPLE_LOAD_BALANCED_SERVICE = {
   "kind": "Service",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "load-balanced",
     "namespace": "test",
-    "selfLink": "/api/v1beta3/namespaces/test/services/load-balanced",
+    "selfLink": "/api/v1/namespaces/test/services/load-balanced",
     "uid": "4ed21ab1-d3e7-11e4-92f6-54ee75107c56",
     "resourceVersion": "104",
     "creationTimestamp": "2015-03-26T18:38:34Z",
@@ -145,7 +145,7 @@ window.EXAMPLE_LOAD_BALANCED_SERVICE = {
       "name": "load-balanced"
     },
     "type": "LoadBalancer",
-    "portalIP": "172.30.17.6",
+    "clusterIP": "172.30.17.6",
     "sessionAffinity": "None",
     "type": "LoadBalancer"
   },

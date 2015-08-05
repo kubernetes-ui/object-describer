@@ -1,10 +1,10 @@
 window.EXAMPLE_RC = {
   "kind": "ReplicationController",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "database-1",
     "namespace": "test",
-    "selfLink": "/api/v1beta3/namespaces/test/replicationcontrollers/database-1",
+    "selfLink": "/api/v1/namespaces/test/replicationcontrollers/database-1",
     "uid": "4ee3fd17-d3e7-11e4-92f6-54ee75107c12",
     "resourceVersion": "22681",
     "creationTimestamp": "2015-03-26T18:38:34Z",
@@ -72,12 +72,12 @@ window.EXAMPLE_RC = {
             ],
             "resources": {},
             "terminationMessagePath": "/dev/termination-log",
-            "imagePullPolicy": "IfNotPresent",
-            "capabilities": {}
+            "imagePullPolicy": "IfNotPresent"
           }
         ],
         "restartPolicy": "Always",
-        "dnsPolicy": "ClusterFirst"
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default"
       }
     }
   },

@@ -9,14 +9,16 @@
     <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>
     <dt>Restart policy</dt>
     <dd>{{resource.spec.restartPolicy || 'Always'}}</dd>
+    <dt ng-if="resource.spec.serviceAccountName">Service account</dt>
+    <dd ng-if="resource.spec.serviceAccountName">{{resource.spec.serviceAccountName}}</dd>
   </dl>
   <h3>Status</h3>
   <dl class="dl-horizontal">
     <dt>Phase</dt>
     <dd>{{resource.status.phase}}</dd>
     <dt>Node</dt>
-    <dd>{{resource.spec.host || 'unknown'}}
-      <span ng-if="resource.status.hostIP && resource.spec.host != resource.status.hostIP">({{resource.status.hostIP}})</dd>
+    <dd>{{resource.spec.nodeName || 'unknown'}}
+      <span ng-if="resource.status.hostIP && resource.spec.nodeName != resource.status.hostIP">({{resource.status.hostIP}})</span></dd>
     <dt>IP on node</dt>
     <dd>
       {{resource.status.podIP}}

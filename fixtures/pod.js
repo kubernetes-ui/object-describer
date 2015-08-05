@@ -1,10 +1,10 @@
 window.EXAMPLE_POD = {
   "kind": "Pod",
-  "apiVersion": "v1beta3",
+  "apiVersion": "v1",
   "metadata": {
     "name": "example-pod",
     "namespace": "test",
-    "selfLink": "/api/v1beta3/namespaces/test/pods/example-pod",
+    "selfLink": "/api/v1/namespaces/test/pods/example-pod",
     "uid": "6aefeebf-d7d2-11e4-a675-54ee75107c12",
     "resourceVersion": "20060",
     "creationTimestamp": "2015-03-31T18:19:06Z",
@@ -38,8 +38,7 @@ window.EXAMPLE_POD = {
         ],
         "resources": {},
         "terminationMessagePath": "/dev/termination-log",
-        "imagePullPolicy": "IfNotPresent",
-        "capabilities": {}
+        "imagePullPolicy": "IfNotPresent"
       },
       {
         "name": "container-2",
@@ -52,8 +51,7 @@ window.EXAMPLE_POD = {
         ],
         "resources": {},
         "terminationMessagePath": "/dev/termination-log",
-        "imagePullPolicy": "IfNotPresent",
-        "capabilities": {}
+        "imagePullPolicy": "IfNotPresent"
       },
       {
         "name": "container-3",
@@ -66,13 +64,13 @@ window.EXAMPLE_POD = {
         ],
         "resources": {},
         "terminationMessagePath": "/dev/termination-log",
-        "imagePullPolicy": "IfNotPresent",
-        "capabilities": {}
+        "imagePullPolicy": "IfNotPresent"
       }
     ],
     "restartPolicy": "Always",
     "dnsPolicy": "ClusterFirst",
-    "host": "example.node.com"
+    "nodeName": "example.node.com",
+    "serviceAccountName": "default"
   },
   "status": {
     "phase": "Running",
@@ -116,7 +114,7 @@ window.EXAMPLE_POD = {
       {
         "name": "container-3",
         "state": {
-          "termination": {
+          "terminated": {
             "finishedAt": "2015-05-11T20:32:19Z",
             "exitCode": 1,
             "reason": "An error occurred"

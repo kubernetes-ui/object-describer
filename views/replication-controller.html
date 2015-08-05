@@ -8,8 +8,7 @@
     <dt>Created</dt>
     <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>
     <dt>Replicas</dt>
-    <!-- TODO: Update for API version v1. The default has changed from 0 to 1. -->
-    <dd>{{resource.spec.replicas || 0}}</dd>
+    <dd>{{(resource.spec.replicas === undefined) ? 1 : resource.spec.replicas}}</dd>
   </dl>
   <h3>Selector</h3>
   <dl class="dl-horizontal">
