@@ -214,25 +214,33 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/container-state.html',
     "<span ng-if=\"containerState | isEmptyObj\"><em>none</em></span>\n" +
-    "<span ng-repeat=\"(state, stateDescription) in containerState | limitTo: 1\">\n" +
-    "  <span ng-switch=\"state\">\n" +
-    "    <span ng-switch-when=\"waiting\">\n" +
+    "<div ng-repeat=\"(state, stateDescription) in containerState | limitTo: 1\">\n" +
+    "  <div ng-switch=\"state\">\n" +
+    "    <div ng-switch-when=\"waiting\">\n" +
     "      Waiting\n" +
-    "      <span ng-if=\"stateDescription.reason\">({{stateDescription.reason}})</span>\n" +
-    "    </span>\n" +
-    "    <span ng-switch-when=\"running\">\n" +
+    "      <!-- Even though we use collapse-long-text, add a style to prevent long\n" +
+    "           unbroken identifiers like docker pull specs from overflowing. -->\n" +
+    "      <div ng-if=\"stateDescription.reason\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n" +
+    "        Reason:\n" +
+    "        <span ng-if=\"stateDescription.reason\" collapse-long-text value=\"{{stateDescription.reason}}\"></span>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "    <div ng-switch-when=\"running\">\n" +
     "      Running\n" +
     "      <span ng-if=\"stateDescription.startedAt\">since {{stateDescription.startedAt | date:'medium'}}</span>\n" +
-    "    </span>\n" +
-    "    <span ng-switch-when=\"terminated\">\n" +
+    "    </div>\n" +
+    "    <div ng-switch-when=\"terminated\">\n" +
     "      Terminated\n" +
     "      <span ng-if=\"stateDescription.finishedAt\">at {{stateDescription.finishedAt | date:'medium'}}</span>\n" +
     "      <span ng-if=\"stateDescription.exitCode\">with exit code {{stateDescription.exitCode}}</span>\n" +
-    "      <span ng-if=\"stateDescription.reason\">({{stateDescription.reason}})</span>\n" +
-    "    </span>\n" +
-    "    <span ng-switch-default>{{state}}</span>\n" +
-    "  </span>\n" +
-    "</span>\n"
+    "      <div ng-if=\"stateDescription.reason\" style=\"overflow: hidden; text-overflow: ellipsis;\">\n" +
+    "        Reason:\n" +
+    "        <span ng-if=\"stateDescription.reason\" collapse-long-text value=\"{{stateDescription.reason}}\"></span>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "    <div ng-switch-default>{{state}}</div>\n" +
+    "  </div>\n" +
+    "</div>\n"
   );
 
 

@@ -101,7 +101,7 @@ window.EXAMPLE_POD = {
         "name": "container-2",
         "state": {
           "waiting": {
-            "reason": "For reasons"
+            "reason": "image pull failed for 172.30.17.139:5000/test/origin-ruby-sample:73214fafa244cb8abbe55273dac5d237a589a5fc7ac09926a1756a42c21e8a58, this may be because there are no credentials on this request. details: (API error (500): v1 ping attempt failed with error: Get http://172.30.17.1399:5000/v1/_ping: dial tcp 172.30.139:5000: i/p timeout ))"
           }
         },
         "lastState": {},
