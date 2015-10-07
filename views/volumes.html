@@ -1,26 +1,26 @@
-<div ng-if="!volumes.length"><em>none</em></div>
+<div ng-if="!volumes.length"><em translate>none</em></div>
 <dl class="dl-horizontal" ng-repeat="volume in volumes">
-<dt>Name</dt>
+<dt translate>Name</dt>
 <dd>{{volume.name}}</dd>
 <!-- Type = host path -->
-<dt ng-if-start="volume.hostPath">Type</dt>
-<dd>host path</dd>
-<dt>Path</dt>
+<dt ng-if-start="volume.hostPath" translate>Type</dt>
+<dd translate>host path</dd>
+<dt translate>Path</dt>
 <dd ng-if-end>{{volume.hostPath.path}}</dd>
 <!-- Type = empty dir -->
-<dt ng-if-start="volume.emptyDir">Type</dt>
-<dd ng-if-end>empty directory</dd>
+<dt ng-if-start="volume.emptyDir" translate>Type</dt>
+<dd ng-if-end translate>empty directory</dd>
 <!-- Type = GCE persistent disk - TODO fill out details -->
-<dt ng-if-start="volume.gcePersistentDisk">Type</dt>
-<dd ng-if-end>GCE persistent disk</dd>
+<dt ng-if-start="volume.gcePersistentDisk" translate>Type</dt>
+<dd ng-if-end translate>GCE persistent disk</dd>
 <!-- Type = git repo -->
-<dt ng-if-start="volume.gitRepo">Type</dt>
-<dd>Git repository</dd>
-<dt>Repository</dt>
+<dt ng-if-start="volume.gitRepo" translate>Type</dt>
+<dd translate>Git repository</dd>
+<dt translate>Repository</dt>
 <dd>{{volume.gitRepo.repository}}</dd>
-<dt>Revision</dt>
+<dt translate>Revision</dt>
 <dd ng-if-end>
   <span ng-if="volume.gitRepo.revision">{{volume.gitRepo.revision}}</span>
-  <span ng-if="!volume.gitRepo.revision"><em>not specified</em></span>
+  <span ng-if="!volume.gitRepo.revision"><em translate>not specified</em></span>
 </dd>
 </dl>

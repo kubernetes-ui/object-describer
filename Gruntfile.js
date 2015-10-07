@@ -89,6 +89,30 @@ module.exports = function(grunt) {
         src: 'views/**.html',
         dest: 'templates.js'
       }
+    },
+    nggettext_extract: {
+      pot: {
+        files: {
+          'po/kubernetes-object-describer.pot': ['views/*.html']
+        }
+      }
+    },
+    nggettext_compile: {
+      all: {
+        options: {
+          format: "json"
+        },
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: "po",
+            dest: "dist/languages",
+            src: ["*.po"],
+            ext: ".json"
+          }
+        ]
+      }
     }
   });
 
@@ -99,6 +123,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-wiredep');  
   grunt.loadNpmTasks('grunt-angular-templates');
+  grunt.loadNpmTasks('grunt-angular-gettext');
+
+  grunt.registerTask('update-po', ['nggettext_extract']);
 
   grunt.registerTask('serve', [
     'less',
@@ -109,6 +136,7 @@ module.exports = function(grunt) {
   ]);  
 
   grunt.registerTask('build', [
+    'nggettext_compile',
     'less',
     'ngtemplates',
     'concat'

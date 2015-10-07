@@ -1,5 +1,5 @@
-  <h3>Annotations</h3>
-  <span ng-if="!resource.metadata.annotations"><em>none</em></span>
+  <h3 translate>Annotations</h3>
+  <span ng-if="!resource.metadata.annotations"><em translate>none</em></span>
   <dl class="dl-horizontal" ng-if="resource.metadata.annotations">
     <dt ng-repeat-start="(annotationKey, annotationValue) in resource.metadata.annotations" title="{{annotationKey}}">{{annotationKey}}</dt>
     <dd ng-repeat-end collapse-long-text value="{{annotationValue}}"></dd>

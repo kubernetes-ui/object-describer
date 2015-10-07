@@ -1,16 +1,16 @@
 <div>
   <kubernetes-object-describe-header resource="resource" kind="kind"></kubernetes-object-describe-header>
   <dl class="dl-horizontal">
-    <dt>Name</dt>
+    <dt translate>Name</dt>
     <dd>{{resource.metadata.name}}</dd>
-    <dt>Namespace</dt>
+    <dt translate>Namespace</dt>
     <dd>{{resource.metadata.namespace}}</dd>
-    <dt>Created</dt>
+    <dt translate>Created</dt>
     <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>
-    <dt>Replicas</dt>
+    <dt translate>Replicas</dt>
     <dd>{{(resource.spec.replicas === undefined) ? 1 : resource.spec.replicas}}</dd>
   </dl>
-  <h3>Selector</h3>
+  <h3 translate>Selector</h3>
   <dl class="dl-horizontal">
     <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector" title="{{selectorKey}}">{{selectorKey}}</dt>
     <dd ng-repeat-end>{{selectorValue}}</dd>

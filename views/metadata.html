@@ -1,9 +1,9 @@
 <dl class="dl-horizontal">
-  <dt>Name</dt>
+  <dt translate>Name</dt>
   <dd>{{resource.metadata.name}}</dd>
-  <dt ng-if="resource.metadata.namespace">Namespace</dt>
+  <dt ng-if="resource.metadata.namespace" translate>Namespace</dt>
   <dd ng-if="resource.metadata.namespace">{{resource.metadata.namespace}}</dd>
-  <dt>Created</dt>
+  <dt translate>Created</dt>
   <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>    
 </dl>
 <kubernetes-object-describe-labels resource="resource"></kubernetes-object-describe-labels>

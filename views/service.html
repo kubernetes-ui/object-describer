@@ -1,32 +1,32 @@
 <div>
   <kubernetes-object-describe-header resource="resource" kind="kind"></kubernetes-object-describe-header>
   <dl class="dl-horizontal">
-    <dt>Name</dt>
+    <dt translate>Name</dt>
     <dd>{{resource.metadata.name}}</dd>
-    <dt>Namespace</dt>
+    <dt translate>Namespace</dt>
     <dd>{{resource.metadata.namespace}}</dd>
-    <dt>Created</dt>
+    <dt translate>Created</dt>
     <dd>{{resource.metadata.creationTimestamp | date:'medium'}}</dd>
-    <dt>Type</dt>
+    <dt translate>Type</dt>
     <dd>{{resource.spec.type}}</dd>
-    <dt>IP</dt>
+    <dt translate>IP</dt>
     <dd>{{resource.spec.clusterIP}}</dd>
-    <dt>Ports</dt>
+    <dt translate>Ports</dt>
     <dd>
-      <div ng-if="!resource.spec.ports.length">None</div>
+      <div ng-if="!resource.spec.ports.length" translate>None</div>
       <div ng-repeat="portMapping in resource.spec.ports | orderBy:'port'">
         {{portMapping.port}} &#8594; {{portMapping.targetPort}} ({{portMapping.protocol}})
       </div>
     </dd>
-    <dt>Session affinity</dt>
+    <dt translate>Session affinity</dt>
     <dd>{{resource.spec.sessionAffinity}}</dd>    
-    <dt ng-if="resource.status.loadBalancer.ingress.length">Ingress points</dt>
+    <dt ng-if="resource.status.loadBalancer.ingress.length" translate>Ingress points</dt>
     <dd ng-if="resource.status.loadBalancer.ingress.length">
       <span ng-repeat="ingress in resource.status.loadBalancer.ingress"
         >{{ingress.ip}}<span ng-if="!$last">, </span></span>
     </dd>
   </dl>
-  <h3>Selector</h3>
+  <h3 translate>Selector</h3>
   <dl class="dl-horizontal">
     <dt ng-repeat-start="(selectorKey, selectorValue) in resource.spec.selector">{{selectorKey}}</dt>
     <dd ng-repeat-end>{{selectorValue}}</dd>
