@@ -79,6 +79,8 @@ Theme
 
 The example theme used in `index.html` is based on bootstrap, however bootstrap is not required as a bower dependency and you can change the theme however you want.
 
+Certain functionality requires CSS, and CSS snippets have been provided. These are generally style agnostic.
+
 Optional Features
 -----------------
 

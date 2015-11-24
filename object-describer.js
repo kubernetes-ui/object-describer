@@ -141,7 +141,12 @@ angular.module('kubernetesUI')
     scope: {
       containers: '='
     },
-    templateUrl: 'views/containers.html'
+    templateUrl: 'views/containers.html',
+    link: function($scope, element, attrs) {
+      $scope.shouldMask = function(name) {
+          return name.toLowerCase().indexOf('password') !== -1;
+      };
+    }
   }
 })
 .directive("kubernetesObjectDescribeContainerStatuses", function() {
@@ -162,26 +167,19 @@ angular.module('kubernetesUI')
     templateUrl: 'views/container-state.html'
   };
 })
-.directive("collapseLongText", function() {
+.directive("revealableText", function() {
   return {
     restrict: 'A',
-    scope: {
-      value: '@',
-      enableCollapse: '=?' // not intended to be passed in, it will be set depending on jquery availability
-    },
-    controller: ["$scope", function($scope) {
-      // If jquery is available
-      $scope.enableCollapse = !!window.$;
-    }],
     link: function($scope, element, attrs) {
-      if ($scope.enableCollapse) {
-        $('.reveal-contents-link', element).click(function (evt) {
-          $(this).hide();
-          $('.reveal-contents', element).show();
-        });  
-      }
-    },    
-    templateUrl: 'views/_collapse-long-text.html'
+      element.addClass('revealable');
+      $(element).on("mouseover", function() {
+        var clickable = element[0].scrollWidth > element[0].clientWidth || element.find(".masked")[0];
+        element.toggleClass("clickable", clickable);
+      });
+      $(element).on("click", function() {
+        element.toggleClass("revealed");
+      });
+    }
   }
 })
 .filter("isEmptyObj", function() {
