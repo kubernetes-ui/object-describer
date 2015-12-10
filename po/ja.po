@@ -1,0 +1,222 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Language: ja\n"
+
+#: views/annotations.html:1
+msgid "Annotations"
+msgstr ""
+
+#: views/pod.html:28
+msgid "Container Statuses"
+msgstr ""
+
+#: views/pod-template.html:10
+msgid "Containers"
+msgstr ""
+
+#: views/metadata.html:6
+#: views/pod.html:8
+#: views/replication-controller.html:8
+#: views/service.html:8
+msgid "Created"
+msgstr ""
+
+#: views/pod-template.html:5
+msgid "DNS policy"
+msgstr ""
+
+#: views/containers.html:15
+msgid "Env vars"
+msgstr ""
+
+#: views/_collapse-long-text.html:3
+msgid "Expand"
+msgstr ""
+
+#: views/volumes.html:15
+msgid "GCE persistent disk"
+msgstr ""
+
+#: views/volumes.html:18
+msgid "Git repository"
+msgstr ""
+
+#: views/service.html:12
+msgid "IP"
+msgstr ""
+
+#: views/pod.html:22
+msgid "IP on node"
+msgstr ""
+
+#: views/containers.html:5
+msgid "Image"
+msgstr ""
+
+#: views/service.html:23
+msgid "Ingress points"
+msgstr ""
+
+#: views/labels.html:1
+msgid "Labels"
+msgstr ""
+
+#: views/container-statuses.html:9
+msgid "Last State"
+msgstr ""
+
+#: views/footer.html:2
+msgid "More details..."
+msgstr ""
+
+#: views/container-statuses.html:3
+#: views/containers.html:3
+#: views/metadata.html:2
+#: views/pod.html:4
+#: views/replication-controller.html:4
+#: views/service.html:4
+#: views/volumes.html:3
+msgid "Name"
+msgstr "名前"
+
+#: views/metadata.html:4
+#: views/pod.html:6
+#: views/replication-controller.html:6
+#: views/service.html:6
+msgid "Namespace"
+msgstr ""
+
+#: views/pod.html:19
+msgid "Node"
+msgstr ""
+
+#: views/service.html:16
+msgid "None"
+msgstr ""
+
+#: views/volumes.html:8
+msgid "Path"
+msgstr ""
+
+#: views/pod.html:17
+msgid "Phase"
+msgstr ""
+
+#: views/containers.html:8
+#: views/service.html:14
+msgid "Ports"
+msgstr ""
+
+#: views/container-statuses.html:13
+msgid "Ready"
+msgstr ""
+
+#: views/replication-controller.html:10
+msgid "Replicas"
+msgstr ""
+
+#: views/volumes.html:19
+msgid "Repository"
+msgstr ""
+
+#: views/container-statuses.html:15
+msgid "Restart Count"
+msgstr ""
+
+#: views/pod-template.html:3
+#: views/pod.html:10
+msgid "Restart policy"
+msgstr ""
+
+#: views/volumes.html:21
+msgid "Revision"
+msgstr ""
+
+#: views/container-state.html:9
+msgid "Running"
+msgstr ""
+
+#: views/replication-controller.html:13
+#: views/service.html:29
+msgid "Selector"
+msgstr ""
+
+#: views/pod-template.html:7
+#: views/pod.html:12
+msgid "Service account"
+msgstr ""
+
+#: views/service.html:21
+msgid "Session affinity"
+msgstr ""
+
+#: views/container-statuses.html:5
+msgid "State"
+msgstr ""
+
+#: views/pod.html:15
+msgid "Status"
+msgstr ""
+
+#: views/container-state.html:13
+msgid "Terminated"
+msgstr ""
+
+#: views/service.html:10
+#: views/volumes.html:11
+#: views/volumes.html:14
+#: views/volumes.html:17
+#: views/volumes.html:6
+msgid "Type"
+msgstr ""
+
+#: views/pod-template.html:12
+msgid "Volumes"
+msgstr ""
+
+#: views/container-state.html:5
+msgid "Waiting"
+msgstr ""
+
+#: views/container-state.html:14
+msgid "at {{stateDescription.finishedAt | date:'medium'}}"
+msgstr ""
+
+#: views/volumes.html:12
+msgid "empty directory"
+msgstr ""
+
+#: views/volumes.html:7
+msgid "host path"
+msgstr ""
+
+#: views/annotations.html:2
+#: views/container-state.html:1
+#: views/container-statuses.html:1
+#: views/containers.html:10
+#: views/containers.html:17
+#: views/containers.html:7
+#: views/labels.html:2
+#: views/pod.html:25
+#: views/volumes.html:1
+msgid "none"
+msgstr ""
+
+#: views/volumes.html:24
+msgid "not specified"
+msgstr ""
+
+#: views/container-state.html:10
+msgid "since {{stateDescription.startedAt | date:'medium'}}"
+msgstr ""
+
+#: views/containers.html:12
+msgid "to host port {{port.hostPort}}"
+msgstr ""
+
+#: views/container-state.html:15
+msgid "with exit code {{stateDescription.exitCode}}"
+msgstr ""

@@ -1,17 +1,17 @@
-<div ng-if="!containerStatuses"><em>none</em></div>
+<div ng-if="!containerStatuses"><em translate>none</em></div>
 <dl ng-repeat="containerStatus in containerStatuses | orderBy:'name'" class="dl-horizontal">
-  <dt>Name</dt>
+  <dt translate>Name</dt>
   <dd>{{containerStatus.name}}</dd>
-  <dt>State</dt>
+  <dt translate>State</dt>
   <dd>
     <kubernetes-object-describe-container-state container-state="containerStatus.state"></container-state>
   </dd>
-  <dt ng-if="!(containerStatus.lastState | isEmptyObj)">Last State</dt>
+  <dt ng-if="!(containerStatus.lastState | isEmptyObj)" translate>Last State</dt>
   <dd ng-if="!(containerStatus.lastState | isEmptyObj)">
     <kubernetes-object-describe-container-state container-state="containerStatus.lastState"></container-state>
   </dd>
-  <dt>Ready</dt>
+  <dt translate>Ready</dt>
   <dd>{{containerStatus.ready}}</dd>
-  <dt>Restart Count</dt>
+  <dt translate>Restart Count</dt>
   <dd>{{containerStatus.restartCount}}</dd>
 </dl>

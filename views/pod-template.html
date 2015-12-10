@@ -1,13 +1,13 @@
 <h3>Pod Template</h3>
 <dl class="dl-horizontal">
-  <dt>Restart policy</dt>
+  <dt translate>Restart policy</dt>
   <dd>{{template.restartPolicy}}</dd>
-  <dt>DNS policy</dt>
+  <dt translate>DNS policy</dt>
   <dd>{{template.dnsPolicy}}</dd>
-  <dt ng-if="template.serviceAccountName">Service account</dt>
+  <dt ng-if="template.serviceAccountName" translate>Service account</dt>
   <dd ng-if="template.serviceAccountName">{{template.serviceAccountName}}</dd>
 </dl>  
-<h4>Containers</h4>
+<h4 translate>Containers</h4>
 <kubernetes-object-describe-containers containers="template.containers"></kubernetes-object-describe-containers>
-<h4>Volumes</h4>
+<h4 translate>Volumes</h4>
 <kubernetes-object-describe-volumes volumes="template.volumes"></kubernetes-object-describe-volumes> 
