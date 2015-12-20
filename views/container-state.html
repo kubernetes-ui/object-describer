@@ -1,20 +1,28 @@
 <span ng-if="containerState | isEmptyObj"><em>none</em></span>
-<span ng-repeat="(state, stateDescription) in containerState | limitTo: 1">
-  <span ng-switch="state">
-    <span ng-switch-when="waiting">
+<div ng-repeat="(state, stateDescription) in containerState | limitTo: 1">
+  <div ng-switch="state">
+    <div ng-switch-when="waiting">
       Waiting
-      <span ng-if="stateDescription.reason">({{stateDescription.reason}})</span>
-    </span>
-    <span ng-switch-when="running">
+      <!-- Even though we use collapse-long-text, add a style to prevent long
+           unbroken identifiers like docker pull specs from overflowing. -->
+      <div ng-if="stateDescription.reason" style="overflow: hidden; text-overflow: ellipsis;">
+        Reason:
+        <span ng-if="stateDescription.reason" collapse-long-text value="{{stateDescription.reason}}"></span>
+      </div>
+    </div>
+    <div ng-switch-when="running">
       Running
       <span ng-if="stateDescription.startedAt">since {{stateDescription.startedAt | date:'medium'}}</span>
-    </span>
-    <span ng-switch-when="terminated">
+    </div>
+    <div ng-switch-when="terminated">
       Terminated
       <span ng-if="stateDescription.finishedAt">at {{stateDescription.finishedAt | date:'medium'}}</span>
       <span ng-if="stateDescription.exitCode">with exit code {{stateDescription.exitCode}}</span>
-      <span ng-if="stateDescription.reason">({{stateDescription.reason}})</span>
-    </span>
-    <span ng-switch-default>{{state}}</span>
-  </span>
-</span>
+      <div ng-if="stateDescription.reason" style="overflow: hidden; text-overflow: ellipsis;">
+        Reason:
+        <span ng-if="stateDescription.reason" collapse-long-text value="{{stateDescription.reason}}"></span>
+      </div>
+    </div>
+    <div ng-switch-default>{{state}}</div>
+  </div>
+</div>
