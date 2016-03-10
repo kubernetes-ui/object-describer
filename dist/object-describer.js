@@ -204,16 +204,16 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/annotations.html',
     "  <h3>Annotations</h3>\n" +
-    "  <span ng-if=\"!resource.metadata.annotations\"><em>none</em></span>\n" +
+    "  <p ng-if=\"!resource.metadata.annotations\"><em>none</em></p>\n" +
     "  <dl class=\"dl-horizontal\" ng-if=\"resource.metadata.annotations\">\n" +
     "    <dt ng-repeat-start=\"(annotationKey, annotationValue) in resource.metadata.annotations\" title=\"{{annotationKey}}\">{{annotationKey}}</dt>\n" +
     "    <dd ng-repeat-end collapse-long-text value=\"{{annotationValue}}\"></dd>\n" +
-    "  </dl>"
+    "  </dl>\n"
   );
 
 
   $templateCache.put('views/container-state.html',
-    "<span ng-if=\"containerState | isEmptyObj\"><em>none</em></span>\n" +
+    "<p ng-if=\"containerState | isEmptyObj\"><em>none</em></p>\n" +
     "<span ng-repeat=\"(state, stateDescription) in containerState | limitTo: 1\">\n" +
     "  <span ng-switch=\"state\">\n" +
     "    <span ng-switch-when=\"waiting\">\n" +
@@ -237,7 +237,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/container-statuses.html',
-    "<div ng-if=\"!containerStatuses\"><em>none</em></div>\n" +
+    "<p ng-if=\"!containerStatuses\"><em>none</em></p>\n" +
     "<dl ng-repeat=\"containerStatus in containerStatuses | orderBy:'name'\" class=\"dl-horizontal\">\n" +
     "  <dt>Name</dt>\n" +
     "  <dd>{{containerStatus.name}}</dd>\n" +
@@ -258,7 +258,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/containers.html',
-    "<div ng-if=\"!containers.length\"><em>none</em></div>\n" +
+    "<p ng-if=\"!containers.length\"><em>none</em></p>\n" +
     "<dl class=\"dl-horizontal\" ng-repeat=\"container in containers\">\n" +
     "<dt>Name</dt>\n" +
     "<dd>{{container.name}}</dd>\n" +
@@ -305,11 +305,11 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('views/labels.html',
     "<h3>Labels</h3>\n" +
-    "<span ng-if=\"!resource.metadata.labels\"><em>none</em></span>\n" +
+    "<p ng-if=\"!resource.metadata.labels\"><em>none</em></p>\n" +
     "<dl class=\"dl-horizontal\" ng-if=\"resource.metadata.labels\">\n" +
     "  <dt ng-repeat-start=\"(labelKey, labelValue) in resource.metadata.labels\" title=\"{{labelKey}}\">{{labelKey}}</dt>\n" +
     "  <dd ng-repeat-end>{{labelValue}}</dd>\n" +
-    "</dl>"
+    "</dl>\n"
   );
 
 
@@ -453,7 +453,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/volumes.html',
-    "<div ng-if=\"!volumes.length\"><em>none</em></div>\n" +
+    "<p ng-if=\"!volumes.length\"><em>none</em></p>\n" +
     "<dl class=\"dl-horizontal\" ng-repeat=\"volume in volumes\">\n" +
     "<dt>Name</dt>\n" +
     "<dd>{{volume.name}}</dd>\n" +
@@ -478,7 +478,7 @@ angular.module('kubernetesUI').run(['$templateCache', function($templateCache) {
     "  <span ng-if=\"volume.gitRepo.revision\">{{volume.gitRepo.revision}}</span>\n" +
     "  <span ng-if=\"!volume.gitRepo.revision\"><em>not specified</em></span>\n" +
     "</dd>\n" +
-    "</dl>"
+    "</dl>\n"
   );
 
 }]);
